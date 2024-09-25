@@ -1,6 +1,6 @@
 # ZEntry
 
-Church Internal Database Web App - Corel Ministry Int'l
+Church Internal Database App - Corel Ministry Int'l
 
 [![React](https://img.shields.io/badge/React-18.x-087ea4.svg)](https://legacy.reactjs.org/docs/getting-started.html)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue.svg)](https://www.typescriptlang.org/docs/)
