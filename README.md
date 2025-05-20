@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://zima-blue.vercel.app" target="blank">
+  <a href="https://zentry.vercel.app" target="blank">
     <img src="./public/social-preview.jpg" width="100%" alt="" />
   </a>
 </p>
@@ -14,9 +14,9 @@
 ## Setup
 
 ```sh
-git clone https://github.com/2gbeh/zima-blue.git
+git clone https://github.com/2gbeh/zentry.git
 
-cd zima-blue
+cd zentry
 
 npm install
 
@@ -25,9 +25,9 @@ npm install
 npm run dev
 ```
 
-| Local                 | Live                         |
-| :-------------------- | :--------------------------- |
-| http://localhost:3000 | https://zima-blue.vercel.app |
+| Local                 | Live                      |
+| :-------------------- | :------------------------ |
+| http://localhost:3000 | https://zentry.vercel.app |
 
 ## Documentation
 

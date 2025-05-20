@@ -1,5 +1,5 @@
 {
-  "name": "junebug",
+  "name": "zentry",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,15 +9,29 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@hookform/resolvers": "^5.0.1",
     "@radix-ui/react-label": "^2.1.6",
     "@radix-ui/react-slot": "^1.2.2",
+    "@reduxjs/toolkit": "^2.8.2",
+    "@supabase/supabase-js": "^2.49.5",
+    "@tabler/icons-react": "^3.33.0",
+    "@types/jsdom": "^21.1.7",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "date-fns": "^4.1.0",
+    "highlight.js": "^11.11.1",
+    "isomorphic-dompurify": "^2.24.0",
+    "jsdom": "^26.1.0",
+    "lodash": "^4.17.21",
     "lucide-react": "^0.511.0",
     "next": "15.3.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "tailwind-merge": "^3.3.0"
+    "react-hook-form": "^7.56.4",
+    "react-redux": "^9.2.0",
+    "sass": "^1.89.0",
+    "tailwind-merge": "^3.3.0",
+    "zod": "^3.25.5"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

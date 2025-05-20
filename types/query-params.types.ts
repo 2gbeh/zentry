@@ -1,0 +1,29 @@
+export type FilterNumberRangeType = {
+  eq?: number; // equals, eq
+  lt?: number;
+  lte?: number;
+  gt?: number;
+  gte?: number;
+};
+
+export type FilterDateRangeType = {
+  eq?: Date; // equals, eq
+  lt?: Date;
+  lte?: Date;
+  gt?: Date;
+  gte?: Date;
+};
+
+export const DateIntervalDatalist = [
+  { value: "today", label: "Today" },
+  { value: "yesterday", label: "Yesterday" },
+  { value: "week", label: "This week" },
+  { value: "month", label: "This month" },
+  { value: "quarter", label: "This quarter" },
+  { value: "year", label: "This year" },
+] as const;
+
+export type FilterDateIntervalType = (typeof DateIntervalDatalist)[number]["value"];
+
+export type SortType = "asc" | "desc";
+
