@@ -33,15 +33,15 @@ export class DateUtil {
   static currentMonth = d.getMonth() + 1;
   static currentDay = d.getDate();
   static currentWeekDay = d.getDay();
-
+  // { value: "Jan", label: "January" }
   static get currentMonthText() {
     return MONTH[d.getMonth()]; // 0-11
   }
-
+  // { value: "Sun", label: "Sunday" }
   static get currentWeekDayText() {
     return DAY[d.getDay()]; // 0-6
   }
-
+  // 25 as 2025
   static parseYear(input: number) {
     if (!isNaN(input)) {
       // is yyyy
@@ -60,7 +60,7 @@ export class DateUtil {
       }
     }
   }
-
+  // 1 as 01
   static parseMonth(input: number) {
     if (!isNaN(input)) {
       if (input >= 1 && input <= 12) {
@@ -68,7 +68,7 @@ export class DateUtil {
       }
     }
   }
-
+  // 1 as 01
   static parseDay(input: number) {
     if (!isNaN(input)) {
       if (input >= 1 && input <= 31) {
