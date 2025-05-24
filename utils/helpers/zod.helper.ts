@@ -91,7 +91,7 @@ export class ZodHelper {
   static select<T extends readonly { value: string; label: string }[]>(
     data: T
   ) {
-    const values = data.map((item) => item.value) as [
+    const values = data.map((it) => it.value) as [
       T[number]["value"],
       ...T[number]["value"][]
     ];

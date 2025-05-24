@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { useDisclosure } from "@mantine/hooks";
+// SHARED IMPORTS
 import { PATH } from "@/constants/PATH";
 
 export const Fab = () => {

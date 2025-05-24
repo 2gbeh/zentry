@@ -12,6 +12,7 @@ import { Logo } from "@/components/atoms/logo";
 import { Copyright } from "@/components/atoms/copyright";
 import { PATH } from "@/constants/PATH";
 import { useRouter } from "next/router";
+import { AvatarCascade } from "@/components/atoms/avatar-cascade";
 
 export default function HomePage() {
   const router = useRouter();
@@ -20,26 +21,10 @@ export default function HomePage() {
       <PageTitle />
       <main className="bg-background flex min-h-svh flex-col items-center justify-center gap-6 p-6 md:p-10">
         <section className="flex items-center gap-4 self-end">
-          <div className="flex -space-x-3">
-            <img
-              src="/images/avatar-1.png"
-              alt="Avatar 1"
-              className="h-8 w-8 rounded-full border-2 border-white dark:border-zinc-900"
-            />
-            <img
-              src="/images/avatar-2.png"
-              alt="Avatar 2"
-              className="h-8 w-8 rounded-full border-2 border-white dark:border-zinc-900"
-            />
-            <img
-              src="/images/avatar-3.png"
-              alt="Avatar 3"
-              className="h-8 w-8 rounded-full border-2 border-white dark:border-zinc-900"
-            />
-            <div className="flex h-8 w-8 items-center justify-center rounded-full border-2 border-white bg-zinc-200 text-xs font-medium text-zinc-700 dark:border-zinc-900 dark:bg-zinc-700 dark:text-zinc-200">
-              +5
-            </div>
-          </div>
+          <AvatarCascade
+            src={["/images/avatar-1.png", "/images/avatar-2.png", "Ashley"]}
+            total={9}
+          />
           <div
             className="border-input flex h-8.5 w-8.5 cursor-pointer items-center justify-center rounded-md border"
             title="Updates"
@@ -56,13 +41,15 @@ export default function HomePage() {
               <form>
                 <div className="flex flex-col gap-6">
                   <div className="flex flex-col items-center gap-2">
-                    <Logo iconOnly />
-                    <h1 className="_font-bold text-3xl">Join the waitlist</h1>
+                    <Logo />
+                    <h1 className="_font-bold mt-6 text-3xl">
+                      Join the waitlist
+                    </h1>
                     <p className="text-muted-foreground text-center text-sm">
-                      Share code snippets with ZEntry
+                      {APP.tagline}
                     </p>
                   </div>
-                  <div className="flex flex-col gap-6">
+                  <div className="mt-6 flex flex-col gap-6">
                     <div className="grid gap-2">
                       <Label htmlFor="email">Email</Label>
                       <Input
@@ -93,19 +80,19 @@ export default function HomePage() {
 
 const Notifications = () => {
   <>
-    {data.map((item) => (
+    {data.map((it, i) => (
       <a
+        key={i}
         href="#"
-        key={item.email}
         className="hover:bg-sidebar-accent hover:text-sidebar-accent-foreground flex flex-col items-start gap-2 border-b p-4 text-sm leading-tight whitespace-nowrap last:border-b-0"
       >
         <div className="flex w-full items-center gap-2">
-          <span>{item.name}</span>{" "}
-          <span className="ml-auto text-xs">{item.date}</span>
+          <span>{it.name}</span>{" "}
+          <span className="ml-auto text-xs">{it.date}</span>
         </div>
-        <span className="font-medium">{item.subject}</span>
+        <span className="font-medium">{it.subject}</span>
         <span className="line-clamp-2 w-[260px] text-xs whitespace-break-spaces">
-          {item.teaser}
+          {it.teaser}
         </span>
       </a>
     ))}
