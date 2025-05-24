@@ -2,7 +2,8 @@ export const APP = {
   slug: "zentry",
   name: "Zentry",
   stylizedName: "ZEntry",
-  baseTitle: "ZEntry x HWP Labs - Share Code Snippets",
+  baseTitle: "Share code snippets with ZEntry",
+  copyright: `&copy; ${new Date().getFullYear()} <a href="https://github.com/2gbeh/zentry" target="_blank">ZEntry &times; HWP Labs</a>. All rights reserved.`,
   theme: {
     brand: "#16B8F3",
     contrast: "#f35116",
