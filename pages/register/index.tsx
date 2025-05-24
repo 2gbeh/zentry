@@ -13,6 +13,7 @@ import Link from "next/link";
 import { Logo } from "@/components/atoms/logo";
 import { Copyright } from "@/components/atoms/copyright";
 import { PATH } from "@/constants/PATH";
+import { Checkbox } from "@/components/shadcn/ui/checkbox";
 
 export default function RegisterPage() {
   return (
@@ -27,8 +28,8 @@ export default function RegisterPage() {
             <div className="w-full max-w-xs">
               <form className="flex flex-col gap-6">
                 <div className="flex flex-col gap-2">
-                  <h1 className="text-2xl _font-bold">Get started</h1>
-                  <p className="text-balance text-sm text-muted-foreground">
+                  <h1 className="_font-bold text-2xl">Get started</h1>
+                  <p className="text-muted-foreground text-sm text-balance">
                     Create a new account
                   </p>
                 </div>
@@ -50,11 +51,20 @@ export default function RegisterPage() {
                     <Label htmlFor="password">Password</Label>
                     <Input id="password" type="password" required />
                   </div>
+                  <div className="flex items-center space-x-2">
+                    <Checkbox id="terms" />
+                    <label
+                      htmlFor="terms"
+                      className="text-sm leading-none font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                    >
+                      Accept terms and conditions
+                    </label>
+                  </div>
                   <Button type="submit" className="w-full">
                     Continue
                   </Button>
-                  <div className="relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t after:border-border">
-                    <span className="relative z-10 bg-background px-2 text-muted-foreground">
+                  <div className="after:border-border relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t">
+                    <span className="bg-background text-muted-foreground relative z-10 px-2">
                       or
                     </span>
                   </div>
@@ -70,7 +80,10 @@ export default function RegisterPage() {
                 </div>
                 <div className="text-center text-sm">
                   Already have an account?{" "}
-                  <Link href={PATH.login} className="underline underline-offset-4">
+                  <Link
+                    href={PATH.login}
+                    className="underline underline-offset-4"
+                  >
                     Sign in
                   </Link>
                 </div>
@@ -79,7 +92,7 @@ export default function RegisterPage() {
           </div>
           <Copyright />
         </div>
-        <div className="relative hidden bg-muted lg:block">
+        <div className="bg-muted relative hidden lg:block">
           <Image
             src="/social-preview.jpg"
             alt=""

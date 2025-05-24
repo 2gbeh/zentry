@@ -129,7 +129,20 @@ body {
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
+  }
+
+  .debug {
+    @apply border border-red-500
+  }
+
+  .debug-2 {
+    @apply border border-green-500
+  }
+
+  .debug-3 {
+    @apply border border-blue-500
   }
 }

@@ -14,7 +14,7 @@ export const Logo: React.FC<PropsType> = ({ iconOnly }) => {
       className="flex flex-col items-center gap-2 font-medium"
     >
       <div className="flex h-8 w-8 items-center justify-center rounded-md">
-        <CodesandboxIcon className="size-6" />
+        <CodesandboxIcon className="size-10" />
       </div>
       <span className="sr-only">{APP.stylizedName}</span>
     </Link>
@@ -23,7 +23,7 @@ export const Logo: React.FC<PropsType> = ({ iconOnly }) => {
       <div className="flex h-6 w-6 items-center justify-center rounded-full bg-primary text-primary-foreground">
         <CodesandboxIcon className="size-4" />
       </div>
-      {APP.stylizedName}
+      {/* {APP.stylizedName} */}
     </Link>
   );
 };
