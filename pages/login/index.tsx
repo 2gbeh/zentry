@@ -12,6 +12,7 @@ import { APP } from "@/constants/APP";
 import Link from "next/link";
 import { Logo } from "@/components/atoms/logo";
 import { Copyright } from "@/components/atoms/copyright";
+import { PATH } from "@/constants/PATH";
 
 export default function LoginPage() {
   return (
@@ -74,7 +75,7 @@ export default function LoginPage() {
                 <div className="text-center text-sm">
                   Don't have an account?{" "}
                   <Link
-                    href="/register"
+                    href={PATH.register}
                     className="underline underline-offset-4"
                   >
                     Sign up

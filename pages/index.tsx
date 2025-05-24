@@ -10,8 +10,11 @@ import { APP } from "@/constants/APP";
 import { GalleryVerticalEnd } from "lucide-react";
 import { Logo } from "@/components/atoms/logo";
 import { Copyright } from "@/components/atoms/copyright";
+import { PATH } from "@/constants/PATH";
+import { useRouter } from "next/router";
 
 export default function HomePage() {
+  const router = useRouter();
   return (
     <>
       <PageTitle />
@@ -37,7 +40,11 @@ export default function HomePage() {
                       required
                     />
                   </div>
-                  <Button type="submit" className="w-full">
+                  <Button
+                    type="submit"
+                    className="w-full"
+                    onClick={() => router.push(PATH.login)}
+                  >
                     Join
                   </Button>
                 </div>
