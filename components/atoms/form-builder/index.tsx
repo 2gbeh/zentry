@@ -9,8 +9,13 @@ type PropsType = PropsWithChildren<{
 
 const Root: React.FC<PropsType> = ({ children, disabled }) => {
   return (
-    <form className="mt-6 flex max-w-sm flex-col gap-6">
-      <fieldset disabled={disabled}>{children}</fieldset>
+    <form className="sm:w-sm w-full px-2 sm:px-0">
+      <fieldset
+        disabled={disabled}
+        className="flex flex-col gap-4"
+      >
+        {children}
+      </fieldset>
     </form>
   );
 };
@@ -31,7 +36,7 @@ const Input_: React.FC<InputPropsType> = ({
   required,
 }) => {
   return (
-    <div className="grid gap-2">
+    <div className="grid gap-1">
       {label ? <Label htmlFor={name}>{label}</Label> : null}
       <Input
         type={type}

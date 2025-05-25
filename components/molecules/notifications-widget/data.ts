@@ -1,4 +1,4 @@
-export const mockNotificationsData = [
+export const mockNotificationsWidgetData = [
   {
     name: "William Smith",
     email: "williamsmith@example.com",

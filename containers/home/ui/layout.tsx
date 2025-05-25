@@ -2,25 +2,28 @@ import { PropsWithChildren } from "react";
 
 const Container: React.FC<PropsWithChildren> = ({ children }) => {
   return (
-    <div className="bg-background flex min-h-svh flex-col items-center justify-center gap-6 p-6 md:p-10">
+    <div className="bg-background flex min-h-svh flex-col gap-4 p-4">
       {children}
     </div>
   );
 };
 
-const Content: React.FC<PropsWithChildren> = ({ children }) => {
+const Header: React.FC<PropsWithChildren> = ({ children }) => {
   return (
-    <div className="flex w-full flex-1 items-center justify-center">
-      <div className="max-w-full sm:max-w-lg">
-        <div className="flex flex-col gap-6">
-          <main className="flex flex-col gap-6">{children}</main>
-        </div>
-      </div>
-    </div>
+    <header className="flex items-center justify-end gap-4">{children}</header>
+  );
+};
+
+const Main: React.FC<PropsWithChildren> = ({ children }) => {
+  return (
+    <main className="flex flex-1 flex-col items-center sm:justify-center gap-4 mt-20 sm:mt-0">
+      {children}
+    </main>
   );
 };
 
 export const Layout = {
   Container,
-  Content,
+  Header,
+  Main,
 };

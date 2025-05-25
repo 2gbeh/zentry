@@ -1,24 +1,19 @@
 import Link from "next/link";
 // SHARED IMPORTS
-import { APP } from "@/constants/APP";
 import { COLOR } from "@/constants/COLOR";
 import { PATH } from "@/constants/PATH";
 
 type PropsType = {
-  variant?: "default" | "brand";
   size?: number;
   path?: string;
+  alt?: boolean;
 };
 
-export const Logo: React.FC<PropsType> = ({
-  variant = "default",
-  size = 18,
-  path,
-}) => {
+export const Logo: React.FC<PropsType> = ({ size = 20, path, alt }) => {
   const [width, height, background] = [
     size,
     size,
-    variant === "default" ? COLOR.white : COLOR.brand,
+    alt ? COLOR.white : COLOR.brand,
   ];
   // RENDER
   return (

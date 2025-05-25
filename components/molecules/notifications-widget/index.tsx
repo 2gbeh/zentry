@@ -2,24 +2,24 @@ import { InboxIcon } from "lucide-react";
 // SHARED IMPORTS
 import { Pressable } from "@/components/atoms/pressable";
 // LOCAL IMPORTS
-import { mockNotificationsData } from "./data";
+import { mockNotificationsWidgetData } from "./data";
 
 type PropsType = {};
 
-export const Notifications: React.FC<PropsType> = ({}) => {
+export const NotificationsWidget: React.FC<PropsType> = ({}) => {
   return (
     <Pressable title="Updates">
       <div className="relative">
         <InboxIcon size={16} />
-        <div className="absolute -top-0.5 -right-0.5 h-2 w-2 rounded-full bg-[#e11]"></div>
+        <div className="bg-contrast absolute -top-0.5 -right-0.5 size-2 rounded-full"></div>
       </div>
     </Pressable>
   );
 };
 
-const NotificationsContextMenu = () => {
+const NotificationsWidgetContextMenu = () => {
   <>
-    {mockNotificationsData.map((it, i) => (
+    {mockNotificationsWidgetData.map((it, i) => (
       <a
         key={i}
         href="#"

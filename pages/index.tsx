@@ -2,29 +2,39 @@ import { useRouter } from "next/router";
 // SHARED IMPORTS
 import { PageTitle } from "@/components/atoms/page-title";
 import { AvatarCascade } from "@/components/atoms/avatar-cascade";
-import { Notifications } from "@/components/molecules/notifications";
+import { NotificationsWidget } from "@/components/molecules/notifications-widget";
+import { Logo } from "@/components/atoms/logo";
 import { FormBuilder } from "@/components/atoms/form-builder";
 import { ThemedButton } from "@/components/atoms/themed-button";
 import { PATH } from "@/constants/PATH";
 // LOCAL IMPORTS
-import { Layout, Heading } from "@/containers/home";
+import { Layout, Heading, useHomePage } from "@/containers/home";
 
 export default function HomePage() {
   const router = useRouter();
+  const {} = useHomePage();
   // RENDER
   return (
     <>
       <PageTitle />
       <Layout.Container>
-        <header className="flex items-center gap-4 self-end">
+        <Layout.Header>
           <AvatarCascade
-            src={["/images/avatar-1.png", "/images/avatar-2.png", "Ashley"]}
-            total={9}
+            src={[
+              "/images/avatar-1.png",
+              "/images/avatar-2.png",
+              "e.tugbeh@outlook.com",
+              "/images/avatar-3.png",
+            ]}
+            total={4}
+            title="Joined"
           />
-          <Notifications />
-        </header>
-        <Layout.Content>
+          <NotificationsWidget />
+        </Layout.Header>
+        <Layout.Main>
+          <Logo />
           <Heading />
+          <p></p>
           <FormBuilder.Root>
             <FormBuilder.Input
               name="email"
@@ -35,7 +45,7 @@ export default function HomePage() {
               Join the waitlist
             </ThemedButton.Solid>
           </FormBuilder.Root>
-        </Layout.Content>
+        </Layout.Main>
       </Layout.Container>
     </>
   );
