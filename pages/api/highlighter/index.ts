@@ -3,7 +3,7 @@ import { JSDOM } from "jsdom";
 import hljs from "highlight.js";
 import createDOMPurify from "isomorphic-dompurify";
 //
-import { PostEntity, CreatePostDTO } from "@/store/src/posts/types";
+import { PostEntity, CreatePostDTO } from "@/store/src/posts/interfaces";
 
 type RequestType = CreatePostDTO;
 

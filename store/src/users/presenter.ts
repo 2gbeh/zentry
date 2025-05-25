@@ -1,4 +1,4 @@
-import { UserEntity } from "./types";
+import { UserEntity } from "./interfaces";
 
 export class UserPresenter {
   constructor(protected readonly row: UserEntity) {}

@@ -1,3 +1,3 @@
 export { supabaseClient } from "./config";
-export { fakeSupabaseErrorResponse } from "./data";
+export { mockSupabaseErrorResponse } from "./data";
 export { type SupabaseResponseType } from "./types";

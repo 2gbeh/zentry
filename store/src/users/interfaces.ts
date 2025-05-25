@@ -1,6 +1,6 @@
 import { z, ZodHelper as Z } from "@/utils/helpers/zod.helper";
+import { DeviceType } from "@/utils/device.util";
 import { SortType } from "@/types/query-params.types";
-import { DeviceType } from "@/types/device.type";
 import { CommonEntity } from "../common";
 //
 import { UserConstants as K } from "./constants";

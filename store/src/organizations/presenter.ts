@@ -1,4 +1,4 @@
-import { OrganizationEntity } from "./types";
+import { OrganizationEntity } from "./interfaces";
 
 export class OrganizationPresenter {
   constructor(protected readonly row: OrganizationEntity) {}

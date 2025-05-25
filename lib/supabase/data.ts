@@ -1,4 +1,4 @@
-export const fakeSupabaseSuccessResponse = {
+export const mockSupabaseSuccessResponse = {
   status: 200,
   statusText: "",
   error: null,
@@ -6,7 +6,7 @@ export const fakeSupabaseSuccessResponse = {
   count: null,
 };
 
-export const fakeSupabaseErrorResponse = {
+export const mockSupabaseErrorResponse = {
   status: 404,
   statusText: "",
   error: {

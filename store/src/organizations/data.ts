@@ -1,4 +1,4 @@
-export const fakeOrganizationsData = [
+export const mockOrganizationsData = [
   {
     created_at: "2025-05-17T20:18:01.819912+00:00",
     updated_at: null,

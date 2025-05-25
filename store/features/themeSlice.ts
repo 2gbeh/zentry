@@ -10,7 +10,7 @@ const initialState = {
 } satisfies SliceType as SliceType;
 
 export const themeSlice = createSlice({
-  name: "theme",
+  name: "themeSlice",
   initialState,
   reducers: {
     reset: () => initialState,

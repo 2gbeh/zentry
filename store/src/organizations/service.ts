@@ -5,7 +5,7 @@ import {
   CreateOrganizationDTO,
   UpdateOrganizationDTO,
   QueryOrganizationDTO,
-} from "./types";
+} from "./interfaces";
 
 export class OrganizationService {
   static validateSchema(obj: unknown) {}

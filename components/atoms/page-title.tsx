@@ -10,7 +10,7 @@ type PropsType = {
 export const PageTitle: React.FC<PropsType> = ({ title, description }) => (
   <Head>
     <title>
-      {title ? `${title} | ${APP.name}` : APP.tagline}
+      {title ? `${title} | ${APP.name}` : APP.baseTitle}
     </title>
     {description ? <meta name="description" content={description} /> : null}
   </Head>

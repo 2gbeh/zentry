@@ -1,5 +1,4 @@
-
-export type PostEntity = {
+export interface PostEntity  {
   file_name: string;
   code_raw: string;
   code_safe: string;

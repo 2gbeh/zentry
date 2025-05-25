@@ -12,7 +12,7 @@ export type ApiResponseType<T> = Promise<
 const baseUrl = process.env.NEXT_PUBLIC_API_URL!;
 
 export const baseApi = createApi({
-  reducerPath: "api",
+  reducerPath: "baseApi",
   baseQuery: fetchBaseQuery({ baseUrl }),
   tagTypes: ["Users", "Organizations"],
   endpoints: (builder) => ({}),

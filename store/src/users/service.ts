@@ -5,7 +5,7 @@ import {
   CreateUserDTO,
   UpdateUserDTO,
   QueryUserDTO,
-} from "./types";
+} from "./interfaces";
 
 export class UserService {
   static validateSchema(obj: unknown) {}

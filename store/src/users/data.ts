@@ -1,4 +1,4 @@
-export const fakeUsersData = [
+export const mockUsersData = [
   {
     image_url: "https://github.com/2gbeh.png",
     name: null,
