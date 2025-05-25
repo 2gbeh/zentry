@@ -1,19 +1,19 @@
 import { InboxIcon } from "lucide-react";
+// SHARED IMPORTS
+import { Pressable } from "@/components/atoms/pressable";
+// LOCAL IMPORTS
 import { mockNotificationsData } from "./data";
 
 type PropsType = {};
 
 export const Notifications: React.FC<PropsType> = ({}) => {
   return (
-    <div
-      className="border-input flex h-8.5 w-8.5 cursor-pointer items-center justify-center rounded-md border"
-      title="Updates"
-    >
+    <Pressable title="Updates">
       <div className="relative">
         <InboxIcon size={16} />
         <div className="absolute -top-0.5 -right-0.5 h-2 w-2 rounded-full bg-[#e11]"></div>
       </div>
-    </div>
+    </Pressable>
   );
 };
 
