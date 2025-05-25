@@ -7,15 +7,19 @@ import { Input } from "@/components/shadcn/ui/input";
 import { Button } from "@/components/shadcn/ui/button";
 import { PageTitle } from "@/components/atoms/page-title";
 import { APP } from "@/constants/APP";
-import { BellIcon, GalleryVerticalEnd, InboxIcon } from "lucide-react";
+import { BellIcon, GalleryVerticalEnd, HeartIcon, InboxIcon } from "lucide-react";
 import { Logo } from "@/components/atoms/logo";
 import { Copyright } from "@/components/atoms/copyright";
 import { PATH } from "@/constants/PATH";
 import { useRouter } from "next/router";
 import { AvatarCascade } from "@/components/atoms/avatar-cascade";
+import { Notifications } from "@/components/molecules/notifications";
+import { IconHeart, IconHeartFilled } from "@tabler/icons-react";
+import { COLOR } from "@/constants/COLOR";
 
 export default function HomePage() {
   const router = useRouter();
+  // RENDER
   return (
     <>
       <PageTitle />
@@ -25,159 +29,48 @@ export default function HomePage() {
             src={["/images/avatar-1.png", "/images/avatar-2.png", "Ashley"]}
             total={9}
           />
-          <div
-            className="border-input flex h-8.5 w-8.5 cursor-pointer items-center justify-center rounded-md border"
-            title="Updates"
-          >
-            <div className="relative">
-              <InboxIcon size={16} />
-              <div className="absolute -top-0.5 -right-0.5 h-2 w-2 rounded-full bg-[#16B8F3]"></div>
-            </div>
-          </div>
+          <Notifications />
         </section>
         <div className="flex w-full flex-1 items-center justify-center">
-          <div className="w-full max-w-sm">
+          <div className="max-w-full sm:max-w-lg">
             <div className="flex flex-col gap-6">
-              <form>
-                <div className="flex flex-col gap-6">
-                  <div className="flex flex-col items-center gap-2">
-                    <Logo />
-                    <h1 className="_font-bold mt-6 text-3xl">
-                      Join the waitlist
-                    </h1>
-                    <p className="text-muted-foreground text-center text-sm">
-                      {APP.tagline}
-                    </p>
-                  </div>
-                  <div className="mt-6 flex flex-col gap-6">
-                    <div className="grid gap-2">
-                      <Label htmlFor="email">Email</Label>
-                      <Input
-                        id="email"
-                        type="email"
-                        placeholder="person@domain.com"
-                        required
-                      />
-                    </div>
-                    <Button
-                      type="submit"
-                      className="w-full"
-                      onClick={() => router.push(PATH.login)}
-                    >
-                      Join
-                    </Button>
-                  </div>
+              <div className="flex flex-col gap-6">
+                <div className="flex flex-col items-center gap-2">
+                  <Logo variant="brand" />
+                  <h1 className="font-bold mt-4 text-6xl text-center leading-16">
+                    Share code snippets with
+                  </h1>
+                  <h1 className="font-semibold mt-2 text-6xl text-center leading-16">
+                    {APP.name}
+                  </h1>
+                  <p className="text-muted-foreground text-center text-sm mt-2 flex items-center gap-2">
+                  <IconHeart size={16} color={COLOR.contrast}/>
+                    HWP Labs
+                  </p>
                 </div>
-              </form>
+                <form className="mt-6 flex flex-col gap-6 max-w-sm">
+                  <div className="grid gap-2">
+                    <Input
+                      id="email"
+                      type="email"
+                      placeholder="Enter email"
+                      required
+                    />
+                  </div>
+                  <Button
+                    type="button"
+                    onClick={() => router.push(PATH.login)}
+                    className="w-full"
+                  >
+                    Join the waitlist
+                  </Button>
+                </form>
+              </div>
             </div>
           </div>
         </div>
-        <Copyright />
       </main>
     </>
   );
 }
 
-const Notifications = () => {
-  <>
-    {data.map((it, i) => (
-      <a
-        key={i}
-        href="#"
-        className="hover:bg-sidebar-accent hover:text-sidebar-accent-foreground flex flex-col items-start gap-2 border-b p-4 text-sm leading-tight whitespace-nowrap last:border-b-0"
-      >
-        <div className="flex w-full items-center gap-2">
-          <span>{it.name}</span>{" "}
-          <span className="ml-auto text-xs">{it.date}</span>
-        </div>
-        <span className="font-medium">{it.subject}</span>
-        <span className="line-clamp-2 w-[260px] text-xs whitespace-break-spaces">
-          {it.teaser}
-        </span>
-      </a>
-    ))}
-  </>;
-};
-
-const data = [
-  {
-    name: "William Smith",
-    email: "williamsmith@example.com",
-    subject: "Meeting Tomorrow",
-    date: "09:34 AM",
-    teaser:
-      "Hi team, just a reminder about our meeting tomorrow at 10 AM.\nPlease come prepared with your project updates.",
-  },
-  {
-    name: "Alice Smith",
-    email: "alicesmith@example.com",
-    subject: "Re: Project Update",
-    date: "Yesterday",
-    teaser:
-      "Thanks for the update. The progress looks great so far.\nLet's schedule a call to discuss the next steps.",
-  },
-  {
-    name: "Bob Johnson",
-    email: "bobjohnson@example.com",
-    subject: "Weekend Plans",
-    date: "2 days ago",
-    teaser:
-      "Hey everyone! I'm thinking of organizing a team outing this weekend.\nWould you be interested in a hiking trip or a beach day?",
-  },
-  {
-    name: "Emily Davis",
-    email: "emilydavis@example.com",
-    subject: "Re: Question about Budget",
-    date: "2 days ago",
-    teaser:
-      "I've reviewed the budget numbers you sent over.\nCan we set up a quick call to discuss some potential adjustments?",
-  },
-  {
-    name: "Michael Wilson",
-    email: "michaelwilson@example.com",
-    subject: "Important Announcement",
-    date: "1 week ago",
-    teaser:
-      "Please join us for an all-hands meeting this Friday at 3 PM.\nWe have some exciting news to share about the company's future.",
-  },
-  {
-    name: "Sarah Brown",
-    email: "sarahbrown@example.com",
-    subject: "Re: Feedback on Proposal",
-    date: "1 week ago",
-    teaser:
-      "Thank you for sending over the proposal. I've reviewed it and have some thoughts.\nCould we schedule a meeting to discuss my feedback in detail?",
-  },
-  {
-    name: "David Lee",
-    email: "davidlee@example.com",
-    subject: "New Project Idea",
-    date: "1 week ago",
-    teaser:
-      "I've been brainstorming and came up with an interesting project concept.\nDo you have time this week to discuss its potential impact and feasibility?",
-  },
-  {
-    name: "Olivia Wilson",
-    email: "oliviawilson@example.com",
-    subject: "Vacation Plans",
-    date: "1 week ago",
-    teaser:
-      "Just a heads up that I'll be taking a two-week vacation next month.\nI'll make sure all my projects are up to date before I leave.",
-  },
-  {
-    name: "James Martin",
-    email: "jamesmartin@example.com",
-    subject: "Re: Conference Registration",
-    date: "1 week ago",
-    teaser:
-      "I've completed the registration for the upcoming tech conference.\nLet me know if you need any additional information from my end.",
-  },
-  {
-    name: "Sophia White",
-    email: "sophiawhite@example.com",
-    subject: "Team Dinner",
-    date: "1 week ago",
-    teaser:
-      "To celebrate our recent project success, I'd like to organize a team dinner.\nAre you available next Friday evening? Please let me know your preferences.",
-  },
-];

@@ -1,7 +1,6 @@
 export const COLOR = {
-  white: "#ffffff",
-  black: "#171717",
-  brand: "#003366",
-  tint: "#e6ebf0",
-  accent: "#663300",
+  black: "#0a0a0a",
+  white: "#ededed",
+  brand: "#16B8F3",
+  contrast: "#f35116",
 };

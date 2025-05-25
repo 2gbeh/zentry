@@ -1,5 +1,6 @@
 import { z, ZodHelper as Z } from "@/utils/helpers/zod.helper";
 import { SortType } from "@/types/query-params.types";
+import { DeviceType } from "@/types/device.type";
 import { CommonEntity } from "../common";
 //
 import { UserConstants as K } from "./constants";
@@ -11,21 +12,11 @@ export interface UserEntity extends CommonEntity {
   email?: string;
   password?: string;
   remember_token?: null | string;
-  device?: UserEntityDevice;
+  device?: DeviceType;
   role?: UserEntityRole;
   status?: UserEntityStatus;
   verified_at?: null | string;
 }
-
-export type UserEntityDevice = {
-  ipv6?: string;
-  userAgent?: string;
-  geolocation?: {
-    long: number;
-    lat: number;
-    accuracy: number;
-  };
-};
 
 export type UserEntityRole = (typeof K.ROLE)[number]["value"];
 
