@@ -18,3 +18,11 @@ export const mockSupabaseErrorResponse = {
   data: null,
   count: null,
 };
+
+export const defaultSupabaseError405Response = {
+  error: {
+    name: "PostgresError",
+    code: "METHOD_NOT_ALLOWED",
+    message: "Method Not Allowed",
+  },
+};

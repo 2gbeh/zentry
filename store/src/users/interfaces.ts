@@ -35,11 +35,11 @@ export const userSchema = z.object({
   verified_at: Z.pastDate().nullish(),
 });
 
-export type CreateUserDTO = z.infer<typeof userSchema>;
+export type CreateUserDto = z.infer<typeof userSchema>;
 
-export type UpdateUserDTO = Partial<CreateUserDTO>;
+export type UpdateUserDto = Partial<CreateUserDto>;
 
-export type QueryUserDTO = {
+export type QueryUserDto = {
   search?: string;
   filter?: {
     role?: UserEntityRole;

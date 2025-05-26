@@ -2,9 +2,9 @@ export { OrganizationConstants } from "./constants";
 export { mockOrganizationsData } from "./data";
 export type {
   OrganizationEntity,
-  CreateOrganizationDTO,
-  UpdateOrganizationDTO,
-  QueryOrganizationDTO,
+  CreateOrganizationDto,
+  UpdateOrganizationDto,
+  QueryOrganizationDto,
 } from "./interfaces";
 export { OrganizationPresenter } from "./presenter";
 export { OrganizationRepository } from "./repository";

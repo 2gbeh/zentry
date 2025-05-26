@@ -1,7 +1,7 @@
 export type SupabaseResponseType<T> = {
   status: number;
   statusText: string;
-  count: null | number;
+  count?: null | number;
   data: null | T;
   error: null | {
     code: string;

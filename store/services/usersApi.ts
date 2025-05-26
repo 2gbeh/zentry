@@ -1,9 +1,5 @@
 import { baseApi } from "./baseApi";
-import {
-  UserEntity,
-  CreateUserDTO,
-  UpdateUserDTO,
-} from "../src/users";
+import { UserEntity, CreateUserDto, UpdateUserDto } from "../src/users";
 
 const url = "/users";
 const type = "Users" as const;
@@ -21,14 +17,11 @@ export const usersApi = baseApi.injectEndpoints({
       query: (id) => `${url}/${id}`,
       providesTags: (result, error, id) => [{ type, id }],
     }),
-    create: builder.mutation<UserEntity, CreateUserDTO>({
+    create: builder.mutation<UserEntity, CreateUserDto>({
       query: (body) => ({ method: "POST", url, body }),
       invalidatesTags: [{ type, id: "LIST" }],
     }),
-    update: builder.mutation<
-      UserEntity,
-      { id: string; body: UpdateUserDTO }
-    >({
+    update: builder.mutation<UserEntity, { id: string; body: UpdateUserDto }>({
       query: ({ id, body }) => ({
         method: "PATCH",
         url: `${url}/${id}`,

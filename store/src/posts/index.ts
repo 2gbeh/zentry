@@ -1,1 +1,1 @@
-export type { PostEntity, CreatePostDTO } from "./interfaces";
+export type { PostEntity, CreatePostDto } from "./interfaces";

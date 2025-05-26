@@ -1,7 +1,7 @@
 export type DeviceType = {
+  userAgent?: string;
   ipv4?: string;
   ipv6?: string;
-  userAgent?: string;
   geolocation?: {
     long: number;
     lat: number;
@@ -9,10 +9,21 @@ export type DeviceType = {
   };
 };
 
-export class DeviceUtil {
-  static userAgent = window?.navigator?.userAgent;
+export interface FetchIpAddressResponse {
+  ipv6: undefined | string;
+  ipv4: undefined | string;
+}
 
-  static async fetchIp() {
+export interface FetchGeolocationResponse {
+  long: number;
+  lat: number;
+  accuracy: number;
+}
+
+export class DeviceUtil {
+  // static userAgent = window ? window.navigator?.userAgent : undefined;
+
+  static async fetchIpAddress() {
     const [ipv6, ipv4] = await Promise.allSettled([
       fetch("https://api64.ipify.org?format=json").then((res) => res.json()),
       fetch("https://api.ipify.org?format=json").then((res) => res.json()),

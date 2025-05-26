@@ -6,13 +6,21 @@ import { NotificationsWidget } from "@/components/molecules/notifications-widget
 import { Logo } from "@/components/atoms/logo";
 import { FormBuilder } from "@/components/atoms/form-builder";
 import { ThemedButton } from "@/components/atoms/themed-button";
-import { PATH } from "@/constants/PATH";
 // LOCAL IMPORTS
 import { Layout, Heading, useHomePage } from "@/containers/home";
 
 export default function HomePage() {
-  const router = useRouter();
-  const {} = useHomePage();
+  const {
+    getCountAndTop3QueryData,
+    getCountAndTop3QueryState,
+    register,
+    errors,
+    handleSubmit,
+    submitting,
+    transformedGetCountAndTop3QueryData,
+    onSubmit,
+  } = useHomePage();
+  // console.log("🚀 ~ HomePage ~ getAllQueryData:", getCountAndTop3QueryData);
   // RENDER
   return (
     <>
@@ -20,13 +28,8 @@ export default function HomePage() {
       <Layout.Container>
         <Layout.Header>
           <AvatarCascade
-            src={[
-              "/images/avatar-1.png",
-              "/images/avatar-2.png",
-              "e.tugbeh@outlook.com",
-              "/images/avatar-3.png",
-            ]}
-            total={4}
+            src={transformedGetCountAndTop3QueryData}
+            total={getCountAndTop3QueryData?.count}
             title="Joined"
           />
           <NotificationsWidget />
@@ -35,14 +38,20 @@ export default function HomePage() {
           <Logo />
           <Heading />
           <p></p>
-          <FormBuilder.Root>
+          <FormBuilder.Root
+            onSubmit={handleSubmit(onSubmit)}
+            disabled={submitting}
+          >
             <FormBuilder.Input
-              name="email"
+              field="email"
+              label="Email"
               type="email"
               placeholder="Enter email"
+              register={register}
+              errors={errors}
             />
-            <ThemedButton.Solid onClick={() => router.push(PATH.login)}>
-              Join the waitlist
+            <ThemedButton.Solid submit loading={submitting}>
+              {submitting ? "One sec..." : "Join the waitlist"}
             </ThemedButton.Solid>
           </FormBuilder.Root>
         </Layout.Main>

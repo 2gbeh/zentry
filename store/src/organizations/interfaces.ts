@@ -16,11 +16,11 @@ export const organizationSchema = z.object({
   name: Z.birthName(),
 });
 
-export type CreateOrganizationDTO = z.infer<typeof organizationSchema>;
+export type CreateOrganizationDto = z.infer<typeof organizationSchema>;
 
-export type UpdateOrganizationDTO = Partial<CreateOrganizationDTO>;
+export type UpdateOrganizationDto = Partial<CreateOrganizationDto>;
 
-export type QueryOrganizationDTO = {
+export type QueryOrganizationDto = {
   search?: string;
   sort?: {
     name?: SortType;

@@ -27,7 +27,7 @@ export const AvatarCascade: React.FC<PropsType> = ({
               className="size-8 rounded-full border-2 border-zinc-900"
             />
           ) : (
-            <AvatarText>{_.formatName(it)}</AvatarText>
+            <AvatarText key={i}>{_.formatName(it)}</AvatarText>
           );
         }
       })}

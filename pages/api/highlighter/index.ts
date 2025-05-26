@@ -3,9 +3,9 @@ import { JSDOM } from "jsdom";
 import hljs from "highlight.js";
 import createDOMPurify from "isomorphic-dompurify";
 //
-import { PostEntity, CreatePostDTO } from "@/store/src/posts/interfaces";
+import { PostEntity, CreatePostDto } from "@/store/src/posts/interfaces";
 
-type RequestType = CreatePostDTO;
+type RequestType = CreatePostDto;
 
 type ResponseType = {
   data?: PostEntity;
@@ -15,7 +15,7 @@ type ResponseType = {
 
 export default function highlighterHandler(
   req: NextApiRequest,
-  res: NextApiResponse<ResponseType>
+  res: NextApiResponse<ResponseType>,
 ) {
   switch (req.method) {
     case "POST":
@@ -23,7 +23,7 @@ export default function highlighterHandler(
         // const { id, q } = req.query
         const { fileName, codeSnippet } = req.body as RequestType;
         const { value, language } = hljs.highlightAuto(codeSnippet);
-         /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
+        /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
         const window = new JSDOM("").window as unknown as any;
         const DOMPurify = createDOMPurify(window);
         const sanitized = DOMPurify.sanitize(value);

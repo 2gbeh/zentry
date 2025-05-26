@@ -2,9 +2,9 @@ import { supabaseClient as orm } from "@/lib/supabase";
 //
 import {
   OrganizationEntity,
-  CreateOrganizationDTO,
-  UpdateOrganizationDTO,
-  QueryOrganizationDTO,
+  CreateOrganizationDto,
+  UpdateOrganizationDto,
+  QueryOrganizationDto,
 } from "./interfaces";
 
 export class OrganizationService {
@@ -12,7 +12,7 @@ export class OrganizationService {
 
   static transformGetQueryData(data: OrganizationEntity[]) {}
 
-  static prepareCreateMutationBody(formData: CreateOrganizationDTO) {}
+  static prepareCreateMutationBody(formData: CreateOrganizationDto) {}
 
-  static prepareUpdateMutationBody(formData: UpdateOrganizationDTO) {}
+  static prepareUpdateMutationBody(formData: UpdateOrganizationDto) {}
 }

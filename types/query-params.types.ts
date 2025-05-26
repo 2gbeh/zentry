@@ -23,7 +23,19 @@ export const DateIntervalDatalist = [
   { value: "year", label: "This year" },
 ] as const;
 
-export type FilterDateIntervalType = (typeof DateIntervalDatalist)[number]["value"];
+export type FilterDateIntervalType =
+  (typeof DateIntervalDatalist)[number]["value"];
 
 export type SortType = "asc" | "desc";
 
+export type PaginateRequestType = {
+  page: number;
+  limit: number;
+};
+
+export type PaginateResponseType = {
+  count: number;  // total, count
+  limit: number; // size, limit
+  pages: number;
+  page: number;
+};

@@ -14,7 +14,11 @@ export class CommonRepository {
   }
 
   async getAll() {
-    return await orm.from(this.table).select().is("deleted_at", null);
+    return await orm
+      .from(this.table)
+      .select()
+      .is("deleted_at", null)
+      .order("created_at", { ascending: false });
   }
 
   async getById(id: IdType) {
@@ -27,13 +31,16 @@ export class CommonRepository {
   }
 
   async create(data: InputType) {
-    return await orm.from(this.table).insert([data]);
+    return await orm.from(this.table).insert([data]).select();
   }
 
   async upsert(data: InputType) {
     return await orm
       .from(this.table)
-      .upsert({ ...data, updated_at: new Date().toISOString() }, { onConflict: "id", ignoreDuplicates: false })
+      .upsert(
+        { ...data, updated_at: new Date().toISOString() },
+        { onConflict: "id", ignoreDuplicates: false },
+      )
       .select()
       .single();
   }

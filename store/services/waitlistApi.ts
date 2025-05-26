@@ -1,33 +1,34 @@
 import { baseApi } from "./baseApi";
 import {
-  OrganizationEntity,
-  CreateOrganizationDto,
-  UpdateOrganizationDto,
-} from "../src/organizations";
+  WaitlistEntity,
+  CreateWaitlistDto,
+  UpdateWaitlistDto,
+  QueryWaitlistResponse,
+} from "../src/waitlist";
 
-const url = "/organizations";
-const type = "Organizations" as const;
+const url = "/waitlist";
+const type = "Waitlist" as const;
 
-export const organizationsApi = baseApi.injectEndpoints({
+export const waitlistApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
-    getAll: builder.query<OrganizationEntity[], void>({
+    getAll: builder.query<WaitlistEntity[], void>({
       query: () => url,
       providesTags: (result) =>
         result
           ? [...result.map(({ id }) => ({ type, id })), { type, id: "LIST" }]
           : [{ type, id: "LIST" }],
     }),
-    getById: builder.query<OrganizationEntity, string>({
+    getById: builder.query<WaitlistEntity, string>({
       query: (id) => `${url}/${id}`,
       providesTags: (result, error, id) => [{ type, id }],
     }),
-    create: builder.mutation<OrganizationEntity, CreateOrganizationDto>({
+    create: builder.mutation<WaitlistEntity, CreateWaitlistDto>({
       query: (body) => ({ method: "POST", url, body }),
       invalidatesTags: [{ type, id: "LIST" }],
     }),
     update: builder.mutation<
-      OrganizationEntity,
-      { id: string; body: UpdateOrganizationDto }
+      WaitlistEntity,
+      { id: string; body: UpdateWaitlistDto }
     >({
       query: ({ id, body }) => ({
         method: "PATCH",
@@ -36,12 +37,26 @@ export const organizationsApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: (result, error, { id }) => [{ type, id }],
     }),
-    delete: builder.mutation<OrganizationEntity, string>({
+    delete: builder.mutation<WaitlistEntity, string>({
       query: (id) => ({ method: "DELETE", url: `${url}/${id}` }),
       invalidatesTags: (result, error, id) => [
         { type, id },
         { type, id: "LIST" },
       ],
+    }),
+    // ADDITIONAL ENDPOINTS
+    getCountAndTop3: builder.query<
+      QueryWaitlistResponse["getCountAndTop3"],
+      void
+    >({
+      query: () => `${url}/rpc/getCountAndTop3`,
+      providesTags: (result) =>
+        result?.data
+          ? [
+              ...result.data.map(({ id }) => ({ type, id })),
+              { type, id: "LIST" },
+            ]
+          : [{ type, id: "LIST" }],
     }),
   }),
   overrideExisting: false,

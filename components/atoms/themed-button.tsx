@@ -3,13 +3,18 @@ import { PropsWithChildren } from "react";
 import { Button } from "../shadcn/ui/button";
 
 type PropsType = PropsWithChildren<{
+  submit?: boolean;
   onClick?: VoidFunction;
   loading?: boolean;
 }>;
 
-const Solid: React.FC<PropsType> = ({ children, onClick, loading }) => {
+const Solid: React.FC<PropsType> = ({ children, submit, onClick, loading }) => {
   return (
-    <Button type="button" onClick={onClick} className="w-full">
+    <Button
+      type={submit ? "submit" : "button"}
+      onClick={onClick}
+      className="w-full"
+    >
       {children}
     </Button>
   );

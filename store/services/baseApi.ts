@@ -1,19 +1,33 @@
-import { SerializedError } from "@reduxjs/toolkit";
 import {
+  BaseQueryFn,
   createApi,
+  FetchArgs,
   fetchBaseQuery,
   FetchBaseQueryError,
 } from "@reduxjs/toolkit/query/react";
 
-export type ApiResponseType<T> = Promise<
-  { data: T | undefined } | { error: SerializedError | FetchBaseQueryError }
->;
-
 const baseUrl = process.env.NEXT_PUBLIC_API_URL!;
+
+const customBaseQuery: BaseQueryFn<
+  string | FetchArgs,
+  unknown,
+  FetchBaseQueryError
+> = async (args, api, extraOptions) => {
+  const rawBaseQuery = fetchBaseQuery({ baseUrl });
+  const result = await rawBaseQuery(args, api, extraOptions);
+  // console.log("🚀 ~ >= ~ result:", result);
+  if (result.error) {
+    return { error: (result.error as any)?.data?.error };
+  }
+  return {
+    data: (result.data as any)?.data ?? result.data,
+  };
+};
 
 export const baseApi = createApi({
   reducerPath: "baseApi",
+  // baseQuery: customBaseQuery,
   baseQuery: fetchBaseQuery({ baseUrl }),
-  tagTypes: ["Users", "Organizations"],
+  tagTypes: ["Users", "Organizations", "Waitlist"],
   endpoints: (builder) => ({}),
 });
