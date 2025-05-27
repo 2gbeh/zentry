@@ -1,18 +1,12 @@
 export type DeviceType = {
   userAgent?: string;
-  ipv4?: string;
-  ipv6?: string;
+  ipAddress?: string;
   geolocation?: {
     long: number;
     lat: number;
     accuracy: number;
   };
 };
-
-export interface FetchIpAddressResponse {
-  ipv6: undefined | string;
-  ipv4: undefined | string;
-}
 
 export interface FetchGeolocationResponse {
   long: number;
@@ -29,10 +23,11 @@ export class DeviceUtil {
       fetch("https://api.ipify.org?format=json").then((res) => res.json()),
     ]);
 
-    return {
-      ipv6: ipv6.status === "fulfilled" ? ipv6.value.ip : undefined,
-      ipv4: ipv4.status === "fulfilled" ? ipv4.value.ip : undefined,
-    };
+    return ipv6.status === "fulfilled"
+      ? ipv6.value.ip
+      : ipv4.status === "fulfilled"
+        ? ipv4.value.ip
+        : undefined;
   }
 
   static async fetchGeolocation() {

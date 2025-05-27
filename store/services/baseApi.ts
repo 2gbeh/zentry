@@ -8,6 +8,14 @@ import {
 
 const baseUrl = process.env.NEXT_PUBLIC_API_URL!;
 
+export const baseApi = createApi({
+  reducerPath: "baseApi",
+  // baseQuery: customBaseQuery,
+  baseQuery: fetchBaseQuery({ baseUrl }),
+  tagTypes: ["Users", "Organizations", "Waitlist"],
+  endpoints: (builder) => ({}),
+});
+
 const customBaseQuery: BaseQueryFn<
   string | FetchArgs,
   unknown,
@@ -23,11 +31,3 @@ const customBaseQuery: BaseQueryFn<
     data: (result.data as any)?.data ?? result.data,
   };
 };
-
-export const baseApi = createApi({
-  reducerPath: "baseApi",
-  // baseQuery: customBaseQuery,
-  baseQuery: fetchBaseQuery({ baseUrl }),
-  tagTypes: ["Users", "Organizations", "Waitlist"],
-  endpoints: (builder) => ({}),
-});

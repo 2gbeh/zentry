@@ -1,20 +1,17 @@
 import { useEffect, useState } from "react";
+import { useRouter, Router } from "next/router";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { toast } from "sonner";
 // SHARED IMPORTS
 import { waitlistApi } from "@/store/services/waitlistApi";
 import { DeviceUtil } from "@/utils/device.util";
 import { MOCK } from "@/constants/MOCK";
 // LOCAL IMPORTS
-import { formDataSchema, FormDataType, HomePageUtil as _ } from "./utils";
-import { sleep } from "@/utils";
-import { useRouter } from "next/router";
-import { PATH } from "@/constants/PATH";
+import { formDataSchema, FormDataType, WaitlistPageUtil as _ } from "./utils";
 
 const M = MOCK.home;
 
-export function useHomePage() {
+export function useWaitlistPage() {
   const router = useRouter();
   // EXTERNAL STATES
   const { data: getCountAndTop3QueryData, ...getCountAndTop3QueryState } =
@@ -43,20 +40,6 @@ export function useHomePage() {
   }, []);
   // ACTIONS
   async function onSubmit(formData: FormDataType) {
-    toast.success("Email already added to waitlist", {
-      closeButton: true,
-      action: {
-        label: "Continue",
-        onClick: () => router.replace(PATH.home),
-      },
-    });
-    // await sleep();
-    // toast.error("Email already added to waitlist", { duration: 1500 });
-    // await sleep();
-    // toast.info("Email already added to waitlist", { duration: 1500 });
-    // await sleep();
-    // toast.warning("Email already added to waitlist", { duration: 1500 });
-    return;
     setSubmitting(true);
     try {
       const ipAddress = await DeviceUtil.fetchIpAddress();
@@ -71,11 +54,10 @@ export function useHomePage() {
         .unwrap()
         .then((data) => {
           reset();
+          _.onSubmitSuccess(router);
         })
         .catch((err) => {
-          const err_ = err as { status: number };
-          if (err_?.status === 409) toast("Email already added to waitlist");
-          else console.log("🚀 ~ onSubmit ~ createMutation ~ err:", err);
+          _.onSubmitError(router, err);
         })
         .finally(() => {
           setSubmitting(false);

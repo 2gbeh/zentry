@@ -1,14 +1,16 @@
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 // SHARED IMPORTS
-import { Fab } from "@/components/atoms/fab";
 import { ReduxProvider } from "@/store/provider";
+import { Fab } from "@/components/atoms/fab";
+import { Toaster } from "@/components/shadcn/ui/sonner";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <ReduxProvider>
       <Component {...pageProps} />
-      <Fab /> 
+      <Fab />
+      <Toaster richColors />
     </ReduxProvider>
   );
 }
