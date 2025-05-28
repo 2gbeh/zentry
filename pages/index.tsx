@@ -25,37 +25,6 @@ export default function HomePage() {
   return (
     <>
       <PageTitle />
-      <Layout.Container>
-        <Layout.Header>
-          <AvatarCascade
-            src={transformedGetCountAndTop3QueryData}
-            total={getCountAndTop3QueryData?.count}
-            title="Joined"
-          />
-          <NotificationsWidget />
-        </Layout.Header>
-        <Layout.Main>
-          <Logo />
-          <Heading />
-          <p></p>
-          <FormBuilder.Root
-            onSubmit={handleSubmit(onSubmit)}
-            disabled={submitting}
-          >
-            <FormBuilder.Input
-              field="email"
-              label="Email"
-              type="email"
-              placeholder="Enter email"
-              register={register}
-              errors={errors}
-            />
-            <ThemedButton.Solid submit loading={submitting}>
-              {submitting ? "One sec..." : "Join the waitlist"}
-            </ThemedButton.Solid>
-          </FormBuilder.Root>
-        </Layout.Main>
-      </Layout.Container>
     </>
   );
 }

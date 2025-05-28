@@ -1,4 +1,4 @@
-export type SupabaseResponseType<T> = {
+export interface SupabaseResponse<T> {
   status: number;
   statusText: string;
   count?: null | number;
@@ -9,4 +9,4 @@ export type SupabaseResponseType<T> = {
     details: null;
     hint: null;
   };
-};
+}

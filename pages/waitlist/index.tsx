@@ -20,11 +20,10 @@ export default function WaitlistPage() {
     transformedGetCountAndTop3QueryData,
     onSubmit,
   } = useWaitlistPage();
-  // console.log("🚀 ~ HomePage ~ getAllQueryData:", getCountAndTop3QueryData);
   // RENDER
   return (
     <>
-      <PageTitle />
+      <PageTitle title={'Join the wailist'} />
       <Layout.Container>
         <Layout.Header>
           <AvatarCascade

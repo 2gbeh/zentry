@@ -2,7 +2,7 @@ import { InboxIcon } from "lucide-react";
 // SHARED IMPORTS
 import { Pressable } from "@/components/atoms/pressable";
 // LOCAL IMPORTS
-import { mockNotificationsWidgetData } from "./data";
+import data from "./data.json";
 
 type PropsType = {};
 
@@ -19,7 +19,7 @@ export const NotificationsWidget: React.FC<PropsType> = ({}) => {
 
 const NotificationsWidgetContextMenu = () => {
   <>
-    {mockNotificationsWidgetData.map((it, i) => (
+    {data.map((it, i) => (
       <a
         key={i}
         href="#"
