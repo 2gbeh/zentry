@@ -1,6 +1,6 @@
 import { CommonRepository } from "../common/repository";
 
-export class UserRepository extends CommonRepository {
+export class UsersRepository extends CommonRepository {
   constructor() {
     super("users");
   }

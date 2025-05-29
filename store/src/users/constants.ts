@@ -1,4 +1,4 @@
-export class UserConstants {
+export class UsersConstants {
   static readonly ROLE = [
     { value: "0", label: "USER" },
     { value: "1", label: "ADMIN" },

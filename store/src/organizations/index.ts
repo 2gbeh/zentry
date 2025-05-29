@@ -1,5 +1,4 @@
-export { OrganizationConstants } from "./constants";
-export { mockOrganizationsData } from "./data";
+export { OrganizationsConstants } from "./constants";
 export type {
   OrganizationEntity,
   CreateOrganizationDto,
@@ -7,5 +6,5 @@ export type {
   QueryOrganizationDto,
 } from "./interfaces";
 export { OrganizationPresenter } from "./presenter";
-export { OrganizationRepository } from "./repository";
-export { OrganizationService } from "./service";
+export { OrganizationsRepository } from "./repository";
+export { OrganizationsService } from "./service";

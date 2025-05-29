@@ -1,37 +1,49 @@
-// SHARED IMPORTS
-import { ImageUtil } from "@/utils/image.util";
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@/components/shadcn/ui/avatar";
 // LOCAL IMPORTS
-import { AvatarText } from "./ui/avatar-text";
+import { AvatarCascadeSkeleton } from "./skeleton";
 import { AvatarCascadeUtil as _ } from "./utils";
 
 type PropsType = {
+  title: string;
   src?: string[];
-  total?: number;
-  title?: string;
+  total?: null | number;
+  loading?: boolean;
 };
 
 export const AvatarCascade: React.FC<PropsType> = ({
-  src = [],
-  total = 0,
   title,
+  src = [],
+  total,
+  loading,
 }) => {
-  return src.length > 0 ? (
+  return loading ? (
+    <AvatarCascadeSkeleton />
+  ) : src.length > 0 ? (
     <figure className="flex -space-x-2">
       {src.map((it, i) => {
         if (i < _.LIMIT) {
-          return ImageUtil.isValidName(it) ? (
-            <img
-              key={i}
-              src={it}
-              alt=""
-              className="size-8 rounded-full border-2 border-zinc-900"
-            />
-          ) : (
-            <AvatarText key={i}>{_.formatName(it)}</AvatarText>
+          return (
+            <Avatar>
+              <AvatarImage src={it} alt="" />
+              <AvatarFallback className="text-foreground cursor-help border-2 border-zinc-900 bg-zinc-700 text-xs font-medium">
+                {_.formatName(it)}
+              </AvatarFallback>
+            </Avatar>
           );
         }
       })}
-      <AvatarText title={title}>{_.formatTotal(total)}</AvatarText>
+      <Avatar>
+        <AvatarFallback
+          title={title}
+          className="text-foreground cursor-help border-2 border-zinc-900 bg-zinc-600 text-xs font-medium"
+        >
+          {_.formatTotal(total ?? 0)}
+        </AvatarFallback>
+      </Avatar>
     </figure>
   ) : null;
 };

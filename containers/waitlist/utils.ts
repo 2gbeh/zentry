@@ -17,10 +17,6 @@ export class WaitlistPageUtil {
 
   static mockDefaultValues: FormDataType = { email: "etugbeh@outlook.com" };
 
-  static transformGetCountAndTop3QueryData = (
-    data?: QueryWaitlistResponse["getCountAndTop3"],
-  ) => (data && data?.data ? data.data.map(({ email }) => email) : []);
-
   static prepareCreateMutationBody = (
     formData: FormDataType,
     userAgent: string,

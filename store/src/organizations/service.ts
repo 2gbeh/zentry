@@ -1,5 +1,3 @@
-import { supabaseClient as orm } from "@/lib/supabase";
-//
 import {
   OrganizationEntity,
   CreateOrganizationDto,
@@ -7,7 +5,7 @@ import {
   QueryOrganizationDto,
 } from "./interfaces";
 
-export class OrganizationService {
+export class OrganizationsService {
   static validateSchema(obj: unknown) {}
 
   static transformGetQueryData(data: OrganizationEntity[]) {}

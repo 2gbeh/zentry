@@ -1,5 +1,3 @@
-import { supabaseClient as orm } from "@/lib/supabase";
-//
 import {
   UserEntity,
   CreateUserDto,
@@ -7,7 +5,7 @@ import {
   QueryUserDto,
 } from "./interfaces";
 
-export class UserService {
+export class UsersService {
   static validateSchema(obj: unknown) {}
 
   static transformGetQueryData(data: UserEntity[]) {}

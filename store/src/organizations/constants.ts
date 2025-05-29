@@ -1,1 +1,1 @@
-export class OrganizationConstants {}
+export class OrganizationsConstants {}

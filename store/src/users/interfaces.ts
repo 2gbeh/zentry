@@ -3,7 +3,7 @@ import { DeviceType } from "@/utils/device.util";
 import { SortType } from "@/types/query-params.types";
 import { CommonEntity } from "../common";
 //
-import { UserConstants as K } from "./constants";
+import { UsersConstants as K } from "./constants";
 
 export interface UserEntity extends CommonEntity {
   image_url?: null | string;

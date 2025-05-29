@@ -1,4 +1,4 @@
-import { supabaseClient as orm } from "@/lib/supabase";
+import { supabaseClient as orm } from "@/lib/supabase/config";
 import { CommonRepository } from "../common/repository";
 
 export class WaitlistRepository extends CommonRepository {

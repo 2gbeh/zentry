@@ -1,4 +1,4 @@
-import { supabaseClient as orm } from "@/lib/supabase";
+import { supabaseClient as orm } from "@/lib/supabase/config";
 
 type InputType = Record<string, unknown>;
 type IdType = string;

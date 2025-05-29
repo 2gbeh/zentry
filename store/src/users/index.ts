@@ -1,5 +1,4 @@
-export { UserConstants } from "./constants";
-export { mockUsersData } from "./data";
+export { UsersConstants } from "./constants";
 export type {
   UserEntity,
   CreateUserDto,
@@ -7,5 +6,5 @@ export type {
   QueryUserDto,
 } from "./interfaces";
 export { UserPresenter } from "./presenter";
-export { UserRepository } from "./repository";
-export { UserService } from "./service";
+export { UsersRepository } from "./repository";
+export { UsersService } from "./service";

@@ -17,19 +17,19 @@ export default function WaitlistPage() {
     errors,
     handleSubmit,
     submitting,
-    transformedGetCountAndTop3QueryData,
     onSubmit,
   } = useWaitlistPage();
   // RENDER
   return (
     <>
-      <PageTitle title={'Join the wailist'} />
+      <PageTitle title={"Join the wailist"} />
       <Layout.Container>
         <Layout.Header>
           <AvatarCascade
-            src={transformedGetCountAndTop3QueryData}
-            total={getCountAndTop3QueryData?.count}
             title="Joined"
+            src={getCountAndTop3QueryData?.data?.map(({ email }) => email)}
+            total={getCountAndTop3QueryData?.count}
+            loading={getCountAndTop3QueryState.isLoading}
           />
           <NotificationsWidget />
         </Layout.Header>

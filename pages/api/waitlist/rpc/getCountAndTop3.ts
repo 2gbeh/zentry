@@ -22,8 +22,7 @@ export default async function waitlistRpcGetCountAndTop3Handler(
     case "GET": {
       const { status, data, count, error } =
         await new WaitlistRepository().getCountAndTop3();
-      const safeCount = count ?? 0;
-      const body = data ? { count: safeCount, data } : { error };
+      const body = data ? { data, count } : { error };
       return res.status(status).json(body);
     }
     default:

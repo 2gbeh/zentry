@@ -31,7 +31,7 @@ export interface QueryWaitlistDto {}
 
 export interface QueryWaitlistResponse {
   getCountAndTop3: {
-    count: number;
+    count: null | number;
     data: Pick<WaitlistEntity, "id" | "email">[];
   };
 }

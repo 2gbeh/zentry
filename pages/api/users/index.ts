@@ -1,37 +1,24 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-//
-import { supabaseClient, SupabaseResponseType } from "@/lib/supabase";
-import {
-  UserEntity,
-  UserService,
-  UserRepository,
-} from "@/store/src/users";
+// SHARED IMPORTS
+import { BaseApiResponse } from "@/store/types";
+import { ApiRoutesUtil as _ } from "@/utils/api-routes.util";
+// LOCAL IMPORTS
+import { UserEntity, UsersRepository } from "@/store/src/users";
 
 type RequestType = undefined;
-
-type ResponseType = {
-  data?: SupabaseResponseType<UserEntity[]>;
-  error?: unknown;
-  meta?: unknown;
-};
+type ResponseType = BaseApiResponse<UserEntity[]>;
 
 export default async function usersHandler(
   req: NextApiRequest,
-  res: NextApiResponse<ResponseType>
+  res: NextApiResponse<ResponseType>,
 ) {
   switch (req.method) {
-    case "GET":
-      try {
-        const result = await new UserRepository().getAll();
-        if (result?.data) {
-          return res.status(200).json({ data: result });
-        } else {
-          throw new Error(result.error.message);
-        }
-      } catch (err) {
-        return res.status(422).json({ error: (err as Error).message });
-      }
+    case "GET": {
+      const { status, data, error } = await new UsersRepository().getAll();
+      const body = data ? { data } : { error };
+      return res.status(status).json(body);
+    }
     default:
-      return res.status(405).json({ error: "Method not allowed" });
+      return res.status(405).json(_.METHOD_NOT_ALLOWED);
   }
 }

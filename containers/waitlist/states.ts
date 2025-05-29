@@ -29,9 +29,6 @@ export function useWaitlistPage() {
   // LOCAL STATES
   const [submitting, setSubmitting] = useState(false);
   const [userAgent, setUserAgent] = useState("");
-  // DERIVED STATES
-  const transformedGetCountAndTop3QueryData =
-    _.transformGetCountAndTop3QueryData(getCountAndTop3QueryData);
   // SIDE EFFECTS
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -76,7 +73,6 @@ export function useWaitlistPage() {
     errors,
     handleSubmit,
     submitting,
-    transformedGetCountAndTop3QueryData,
     onSubmit,
   };
 }
