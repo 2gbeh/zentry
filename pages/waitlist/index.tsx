@@ -7,7 +7,7 @@ import { Logo } from "@/components/atoms/logo";
 import { FormBuilder } from "@/components/atoms/form-builder";
 import { ThemedButton } from "@/components/atoms/themed-button";
 // LOCAL IMPORTS
-import { Layout, Heading, useWaitlistPage } from "@/containers/waitlist";
+import { Layout, Jumbotron, Masthead, useWaitlistPage } from "@/containers/waitlist";
 
 export default function WaitlistPage() {
   const {
@@ -35,7 +35,8 @@ export default function WaitlistPage() {
         </Layout.Header>
         <Layout.Main>
           <Logo />
-          <Heading />
+          <Jumbotron />
+          <Masthead />
           <p></p>
           <FormBuilder.Root
             onSubmit={handleSubmit(onSubmit)}

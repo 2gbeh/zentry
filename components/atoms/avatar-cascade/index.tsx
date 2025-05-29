@@ -29,7 +29,7 @@ export const AvatarCascade: React.FC<PropsType> = ({
           return (
             <Avatar>
               <AvatarImage src={it} alt="" />
-              <AvatarFallback className="text-foreground cursor-help border-2 border-zinc-900 bg-zinc-700 text-xs font-medium">
+              <AvatarFallback className="text-foreground cursor-help border-2 border-zinc-900 bg-zinc-700 text-xs">
                 {_.formatName(it)}
               </AvatarFallback>
             </Avatar>

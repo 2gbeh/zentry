@@ -2,7 +2,6 @@ import { NextRouter } from "next/router";
 import { z } from "zod";
 import { toast } from "sonner";
 // SHARED IMPORTS
-import { QueryWaitlistResponse } from "@/store/src/waitlist/interfaces";
 import { FetchGeolocationResponse } from "@/utils/device.util";
 import { PATH } from "@/constants/PATH";
 
