@@ -7,7 +7,7 @@ import { waitlistApi } from "@/store/services/waitlistApi";
 import { DeviceUtil } from "@/utils/device.util";
 import { MOCK } from "@/constants/MOCK";
 // LOCAL IMPORTS
-import { formDataSchema, FormDataType, WaitlistPageUtil as _ } from "./utils";
+import { formDataSchema, FormDataType, WaitlistPageUtils as _ } from "./utils";
 
 const M = MOCK.home;
 

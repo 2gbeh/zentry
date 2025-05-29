@@ -1,13 +1,13 @@
 import { useRouter } from "next/router";
 // SHARED IMPORTS
 import { PageTitle } from "@/components/atoms/page-title";
-import { AvatarCascade } from "@/components/atoms/avatar-cascade";
-import { NotificationsWidget } from "@/components/molecules/notifications-widget";
+import { AvatarCascade } from "@/components/molecules/avatar-cascade";
+import { NotificationsWidget } from "@/components/widgets/notifications-widget";
 import { Logo } from "@/components/atoms/logo";
-import { FormBuilder } from "@/components/atoms/form-builder";
+import { FormBuilder } from "@/components/molecules/form-builder";
 import { ThemedButton } from "@/components/atoms/themed-button";
 // LOCAL IMPORTS
-import { Layout, Jumbotron, Masthead, useWaitlistPage } from "@/containers/waitlist";
+import { Layout, Jumbotron, Masthead, useWaitlistPage } from "@/containers/waitlist-page-container";
 
 export default function WaitlistPage() {
   const {

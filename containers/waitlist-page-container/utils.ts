@@ -11,7 +11,7 @@ export const formDataSchema = z.object({
 
 export type FormDataType = z.infer<typeof formDataSchema>;
 
-export class WaitlistPageUtil {
+export class WaitlistPageUtils {
   static defaultValues: FormDataType = { email: "" };
 
   static mockDefaultValues: FormDataType = { email: "etugbeh@outlook.com" };

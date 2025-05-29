@@ -4,9 +4,9 @@ import { Pressable } from "@/components/atoms/pressable";
 // LOCAL IMPORTS
 import data from "./data.json";
 
-type PropsType = {};
+type PropsType = undefined;
 
-export const NotificationsWidget: React.FC<PropsType> = ({}) => {
+export const NotificationsWidget: React.FC = ({}) => {
   return (
     <Pressable title="Updates">
       <div className="relative">

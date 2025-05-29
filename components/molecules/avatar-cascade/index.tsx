@@ -27,7 +27,7 @@ export const AvatarCascade: React.FC<PropsType> = ({
       {src.map((it, i) => {
         if (i < _.LIMIT) {
           return (
-            <Avatar>
+            <Avatar key={i}>
               <AvatarImage src={it} alt="" />
               <AvatarFallback className="text-foreground cursor-help border-2 border-zinc-900 bg-zinc-700 text-xs">
                 {_.formatName(it)}
