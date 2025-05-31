@@ -4,76 +4,90 @@ import {
   UseFormRegister,
   FieldValues,
   FieldErrors,
+  UseFormReturn,
+  Control,
 } from "react-hook-form";
 // SHARED IMPORTS
-import { Label } from "@/components/shadcn/ui/label";
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/shadcn/ui/form";
 import { Input } from "@/components/shadcn/ui/input";
 import { cn } from "@/components/shadcn/utils";
 
-type PropsType = PropsWithChildren<{
-  onSubmit?: VoidFunction;
-  disabled?: boolean;
-}>;
+interface RootProps<T extends FieldValues> extends PropsWithChildren {
+  form?: UseFormReturn<T>;
+  onSubmit?: (values: T) => void | Promise<void>;
+}
 
-const Root: React.FC<PropsType> = ({ children, onSubmit, disabled }) => {
-  return (
-    <form onSubmit={onSubmit} className="w-full px-2 sm:w-sm sm:px-0">
-      <fieldset disabled={disabled} className="flex flex-col gap-4">
+function Root<T extends FieldValues>({
+  children,
+  form,
+  onSubmit = () => undefined,
+}: RootProps<T>) {
+  return form ? (
+    <Form {...form}>
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="w-full space-y-4 px-2 sm:w-sm sm:px-0"
+      >
         {children}
-      </fieldset>
-    </form>
+      </form>
+    </Form>
+  ) : (
+    <form className="w-full space-y-4 px-2 sm:w-sm sm:px-0">{children}</form>
   );
-};
+}
 
-interface InputPropsType<T extends FieldValues> {
-  field: Path<T>;
-  label?: string;
+interface FieldInputProps<T extends FieldValues> {
+  control: Control<T>;
+  name: Path<T>;
   type?: string;
+  label?: string;
   placeholder?: string;
-  //
-  register?: UseFormRegister<T>;
-  errors?: FieldErrors<T>;
   info?: string;
 }
 
-function Input_<T extends FieldValues>({
-  field,
-  label,
+function FieldInput<T extends FieldValues>({
+  control,
+  name,
   type = "text",
+  label,
   placeholder,
-  //
-  register,
-  errors,
   info,
-}: InputPropsType<T>) {
+}: FieldInputProps<T>) {
   return (
-    <div className="flex flex-col">
-      {/* LABEL */}
-      {label ? (
-        <Label htmlFor={field as string} className="mb-2">
-          {label}
-        </Label>
-      ) : null}
-      {/* INPUT */}
-      <Input
-        {...register?.(field)}
-        type={type}
-        id={field as string}
-        placeholder={placeholder}
-      />
-      {/* ERROR */}
-      {errors?.[field] ? (
-        <p className="text-destructive mt-1 px-1 text-sm">
-          {errors[field]?.message?.toString()}
-        </p>
-      ) : info ? (
-        <p className="text-muted-foreground mt-1 px-1 text-sm">{info}</p>
-      ) : null}
-    </div>
+    <FormField
+      control={control}
+      name={name}
+      render={({ field, fieldState: { invalid } }) => (
+        <FormItem>
+          {/* LABEL */}
+          {label ? <FormLabel className="mb-0.5">{label}</FormLabel> : null}
+          {/* INPUT */}
+          <FormControl>
+            <Input type={type} placeholder={placeholder} {...field} />
+          </FormControl>
+          {/* SUBTEXT */}
+          <div className="px-1">
+            {invalid ? (
+              <FormMessage />
+            ) : info ? (
+              <FormDescription>{info}</FormDescription>
+            ) : null}
+          </div>
+        </FormItem>
+      )}
+    />
   );
 }
 
 export const FormBuilder = {
   Root,
-  Input: Input_,
+  FieldInput,
 };

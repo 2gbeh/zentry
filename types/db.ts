@@ -62,7 +62,7 @@ interface Post {
 interface Project {
   id: string;                    // UUID
   user_id: string | null;       // UUID of the owner, nullable
-  title: string;                // Project title (unique)
+  name: string;                // Project title (unique)
   description: string | null;   // Optional project description
   created_at: string;           // ISO string with timezone
   updated_at: string | null;    // ISO string without timezone or null

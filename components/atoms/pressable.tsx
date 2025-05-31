@@ -11,12 +11,12 @@ export const Pressable: React.FC<PropsType> = ({
   title,
 }) => {
   return (
-    <button
+    <div
       onClick={onClick}
       title={title}
       className="border-input flex size-8.5 cursor-pointer items-center justify-center rounded-md border"
     >
       {children}
-    </button>
+    </div>
   );
 };

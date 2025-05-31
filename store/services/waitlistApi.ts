@@ -13,10 +13,11 @@ export const waitlistApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getAll: builder.query<WaitlistEntity[], void>({
       query: () => url,
-      providesTags: (result) =>
-        result
+      providesTags: (result) => {
+        return result
           ? [...result.map(({ id }) => ({ type, id })), { type, id: "LIST" }]
-          : [{ type, id: "LIST" }],
+          : [{ type, id: "LIST" }];
+      },
     }),
     getById: builder.query<WaitlistEntity, string>({
       query: (id) => `${url}/${id}`,
@@ -44,20 +45,14 @@ export const waitlistApi = baseApi.injectEndpoints({
         { type, id: "LIST" },
       ],
     }),
-    // ADDITIONAL ENDPOINTS
-    getCountAndTop3: builder.query<
-      QueryWaitlistResponse["getCountAndTop3"],
-      void
-    >({
-      query: () => `${url}/rpc/getCountAndTop3`,
+    // CUSTOM ENDPOINTS
+    getTop3: builder.query<QueryWaitlistResponse["getTop3"], void>({
+      query: () => `${url}/rpc/getTop3`,
       providesTags: (result) =>
-        result?.data
-          ? [
-              ...result.data.map(({ id }) => ({ type, id })),
-              { type, id: "LIST" },
-            ]
+        result
+          ? [...result.map(({ id }) => ({ type, id })), { type, id: "LIST" }]
           : [{ type, id: "LIST" }],
     }),
   }),
-  overrideExisting: false,
+  overrideExisting: true,
 });

@@ -6,10 +6,10 @@ export class WaitlistRepository extends CommonRepository {
     super("waitlist");
   }
 
-  async getCountAndTop3() {
+  async getTop3() {
     return await orm
       .from(this.table)
-      .select("id,email", { count: "exact" })
+      .select("id, email")
       .is("deleted_at", null)
       .order("created_at", { ascending: false })
       .limit(3);

@@ -41,22 +41,3 @@ export interface SonnerExternalToast {
   visible: boolean;
   // and possibly other internal metadata
 }
-
-/**
-toast('Message', {
-  description: 'Additional details here',
-  duration: 4000, // in milliseconds
-  position: 'top-center', // 'top-left' | 'top-center' | 'top-right' | 'bottom-left' | 'bottom-center' | 'bottom-right'
-  action: {
-    label: 'Undo',
-    onClick: () => console.log('Undo clicked'),
-  },
-  cancel: {
-    label: 'Cancel',
-    onClick: () => console.log('Cancel clicked'),
-  },
-  icon: <YourIconComponent />,
-  important: true, // Prevent auto-dismiss
-});
-
- */

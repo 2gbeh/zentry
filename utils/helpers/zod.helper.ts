@@ -24,6 +24,11 @@ export class ZodHelper {
     return z.string().min(min).max(max);
   }
 
+  static status(options?: { min?: number; max?: number }) {
+    const { min = 0, max = 9 } = options ?? {};
+    return z.number().int().min(min).max(max);
+  }
+
   static birthName(options?: { message?: string }) {
     const { message = "Invalid email address" } = options ?? {};
     return z
@@ -84,16 +89,16 @@ export class ZodHelper {
     return z.preprocess(
       (val) =>
         typeof val === "string" && val.trim() !== "" ? parseFloat(val) : 0,
-      z.number().nonnegative(message)
+      z.number().nonnegative(message),
     );
   }
 
   static select<T extends readonly { value: string; label: string }[]>(
-    data: T
+    data: T,
   ) {
     const values = data.map((it) => it.value) as [
       T[number]["value"],
-      ...T[number]["value"][]
+      ...T[number]["value"][],
     ];
     return z.enum(values);
   }
@@ -141,12 +146,17 @@ export class ZodHelper {
   }
 
   static device() {
+    const ipv4Regex =
+      /^(25[0-5]|2[0-4]\d|1\d{2}|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d{2}|[1-9]?\d)){3}$/;
     const ipv6Regex =
       /^(([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}|(::)|(([0-9a-fA-F]{1,4}:){1,6}:)|(([0-9a-fA-F]{1,4}:){1,5}:[0-9a-fA-F]{1,4})|(([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,2})|(([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,3})|(([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,4})|([0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,5}))|(:((:[0-9a-fA-F]{1,4}){1,6})))(%[0-9a-zA-Z]{1,})?$/;
-    //
+
     return z.object({
-      ipv6: z.string().regex(ipv6Regex, "Invalid IPv6 address").optional(),
       userAgent: z.string().max(512, "User‑Agent too long").optional(),
+      ipAddress: z.union([
+        z.string().regex(ipv4Regex, "Invalid IPv4 address").optional(),
+        z.string().regex(ipv6Regex, "Invalid IPv6 address").optional(),
+      ]),
       geolocation: z
         .object({
           long: z.number().min(-180).max(180),

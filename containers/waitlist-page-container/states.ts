@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useRouter, Router } from "next/router";
+import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 // SHARED IMPORTS
@@ -14,21 +14,17 @@ const M = MOCK.home;
 export function useWaitlistPage() {
   const router = useRouter();
   // EXTERNAL STATES
-  const { data: getCountAndTop3QueryData, ...getCountAndTop3QueryState } =
-    waitlistApi.useGetCountAndTop3Query();
+  const { data: getTop3QueryData, ...getTop3QueryState } =
+    waitlistApi.useGetTop3Query();
   const [createMutation] = waitlistApi.useCreateMutation();
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm<FormDataType>({
-    resolver: zodResolver(formDataSchema),
-    defaultValues: M.formData ? _.mockDefaultValues : _.defaultValues,
-  });
   // LOCAL STATES
   const [submitting, setSubmitting] = useState(false);
   const [userAgent, setUserAgent] = useState("");
+  // DERIVED STATES
+  const form = useForm<FormDataType>({
+    resolver: zodResolver(formDataSchema),
+    defaultValues: M.formData ? _.mockDefaultValues : _.defaultValues,
+  });
   // SIDE EFFECTS
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -50,7 +46,7 @@ export function useWaitlistPage() {
       createMutation(body)
         .unwrap()
         .then((data) => {
-          reset();
+          form.reset();
           _.onSubmitSuccess(router);
         })
         .catch((err) => {
@@ -67,12 +63,10 @@ export function useWaitlistPage() {
   }
 
   return {
-    getCountAndTop3QueryData,
-    getCountAndTop3QueryState,
-    register,
-    errors,
-    handleSubmit,
+    getTop3QueryData,
+    getTop3QueryState,
     submitting,
+    form,
     onSubmit,
   };
 }

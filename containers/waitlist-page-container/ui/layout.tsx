@@ -16,7 +16,7 @@ const Header: React.FC<PropsWithChildren> = ({ children }) => {
 
 const Main: React.FC<PropsWithChildren> = ({ children }) => {
   return (
-    <main className="flex flex-1 flex-col items-center sm:justify-center gap-4 mt-20 sm:mt-0">
+    <main className="flex flex-1 flex-col items-center sm:justify-center gap-4 mt-18 sm:mt-0">
       {children}
     </main>
   );

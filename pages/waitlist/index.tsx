@@ -7,18 +7,16 @@ import { Logo } from "@/components/atoms/logo";
 import { FormBuilder } from "@/components/molecules/form-builder";
 import { ThemedButton } from "@/components/atoms/themed-button";
 // LOCAL IMPORTS
-import { Layout, Jumbotron, Masthead, useWaitlistPage } from "@/containers/waitlist-page-container";
+import {
+  Layout,
+  Jumbotron,
+  Masthead,
+  useWaitlistPage,
+} from "@/containers/waitlist-page-container";
 
 export default function WaitlistPage() {
-  const {
-    getCountAndTop3QueryData,
-    getCountAndTop3QueryState,
-    register,
-    errors,
-    handleSubmit,
-    submitting,
-    onSubmit,
-  } = useWaitlistPage();
+  const { getTop3QueryData, getTop3QueryState, submitting, form, onSubmit } =
+    useWaitlistPage();
   // RENDER
   return (
     <>
@@ -27,9 +25,9 @@ export default function WaitlistPage() {
         <Layout.Header>
           <AvatarCascade
             title="Joined"
-            src={getCountAndTop3QueryData?.data?.map(({ email }) => email)}
-            total={getCountAndTop3QueryData?.count}
-            loading={getCountAndTop3QueryState.isLoading}
+            src={getTop3QueryData?.map(({ email }) => email!)}
+            total={getTop3QueryData?.length}
+            loading={getTop3QueryState.isLoading}
           />
           <NotificationsWidget />
         </Layout.Header>
@@ -38,20 +36,16 @@ export default function WaitlistPage() {
           <Jumbotron />
           <Masthead />
           <p></p>
-          <FormBuilder.Root
-            onSubmit={handleSubmit(onSubmit)}
-            disabled={submitting}
-          >
-            <FormBuilder.Input
-              field="email"
-              label="Email"
+          <FormBuilder.Root form={form} onSubmit={onSubmit}>
+            <FormBuilder.FieldInput
+              control={form.control}
+              name="email"
               type="email"
+              label="Email"
               placeholder="Enter email"
-              register={register}
-              errors={errors}
             />
-            <ThemedButton.Solid submit loading={submitting}>
-              {submitting ? "One sec..." : "Join the waitlist"}
+            <ThemedButton.Solid loading={submitting} typeSubmit fullWidth>
+              Join the waitlist
             </ThemedButton.Solid>
           </FormBuilder.Root>
         </Layout.Main>

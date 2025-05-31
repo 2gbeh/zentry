@@ -76,4 +76,17 @@ export class DateUtil {
       }
     }
   }
+
+  static todayTomorrowISO() {
+    const startOfToday = new Date();
+    startOfToday.setHours(0, 0, 0, 0);
+    
+    const startOfTomorrow = new Date(startOfToday);
+    startOfTomorrow.setDate(startOfToday.getDate() + 1);
+
+    return {
+      today: startOfToday.toISOString(),
+      tomorrow: startOfTomorrow.toISOString(),
+    };
+  }
 }

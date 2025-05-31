@@ -1,7 +1,7 @@
 type InputType = null | string;
 
 export class ImageUtil {
-  static isValidName(str?: InputType) {
+  static isValidExt(str?: InputType) {
     return /\.(jpg|jpeg|png|gif|bmp|webp|svg)$/i.test(str ?? "#");
   }
 

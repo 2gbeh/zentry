@@ -5,4 +5,5 @@ export type {
   QueryWaitlistDto,
   QueryWaitlistResponse,
 } from "./interfaces";
+export { WaitlistPresenter } from "./presenter";
 export { WaitlistRepository } from "./repository";

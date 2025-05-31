@@ -12,7 +12,7 @@ export const baseApi = createApi({
   reducerPath: "baseApi",
   // baseQuery: customBaseQuery,
   baseQuery: fetchBaseQuery({ baseUrl }),
-  tagTypes: ["Users", "Organizations", "Waitlist"],
+  tagTypes: ["Posts", "Waitlist"],
   endpoints: (builder) => ({}),
 });
 

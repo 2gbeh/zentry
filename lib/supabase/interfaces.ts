@@ -6,7 +6,13 @@ export interface SupabaseResponse<T> {
   error: null | {
     code: string;
     message: string;
-    details: null;
-    hint: null;
+    details:
+      | null
+      | {
+          cardinality: string;
+          embedding: string;
+          relationship: string;
+        }[];
+    hint: null | string;
   };
 }

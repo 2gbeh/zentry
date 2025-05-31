@@ -1,8 +1,10 @@
+// SHARED IMPORTS
 import {
   Avatar,
   AvatarFallback,
   AvatarImage,
 } from "@/components/shadcn/ui/avatar";
+import { ImageUtil } from "@/utils/image.util";
 // LOCAL IMPORTS
 import { AvatarCascadeSkeleton } from "./skeleton";
 import { AvatarCascadeUtil as _ } from "./utils";
@@ -28,10 +30,13 @@ export const AvatarCascade: React.FC<PropsType> = ({
         if (i < _.LIMIT) {
           return (
             <Avatar key={i}>
-              <AvatarImage src={it} alt="" />
-              <AvatarFallback className="text-foreground cursor-help border-2 border-zinc-900 bg-zinc-700 text-xs">
-                {_.formatName(it)}
-              </AvatarFallback>
+              {ImageUtil.isValidExt(it) ? (
+                <AvatarImage src={it} alt="" className="" />
+              ) : (
+                <AvatarFallback className="text-foreground cursor-help border-2 border-zinc-900 bg-zinc-700 text-xs">
+                  {_.formatName(it)}
+                </AvatarFallback>
+              )}
             </Avatar>
           );
         }

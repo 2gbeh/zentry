@@ -17,12 +17,18 @@ export default async function waitlistHandler(
   res: NextApiResponse<ResponseType>,
 ) {
   switch (req.method) {
+    case "GET": {
+      const { status, data, error } = await new WaitlistRepository().getAll();
+      const output = data ?? { error };
+      return res.status(status).json(output);
+    }
     case "POST": {
-      const body = req.body as RequestType;
+      const input = req.body as RequestType;
       const { status, data, error } = await new WaitlistRepository().create(
-        body,
+        input,
       );
-      return res.status(status).json(data ? { data } : { error });
+      const output = data ?? { error };
+      return res.status(status).json(output);
     }
     default:
       return res.status(405).json(_.METHOD_NOT_ALLOWED);
