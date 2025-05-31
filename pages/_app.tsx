@@ -9,7 +9,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <ReduxProvider>
       <Component {...pageProps} />
-      <Fab />
+      {process.env.NODE_ENV === "production" ? null : <Fab />}
       <Toaster richColors />
     </ReduxProvider>
   );

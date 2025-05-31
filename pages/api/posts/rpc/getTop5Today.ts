@@ -13,7 +13,7 @@ type ResponseType = QueryPostResponse["getTop5Today"] | BaseApiResponseError;
 
 export default async function postsRpcGetTop5TodayHandler(
   req: NextApiRequest,
-  res: NextApiResponse<ResponseType>,
+  res: NextApiResponse<unknown>,
 ) {
   switch (req.method) {
     case "GET": {
