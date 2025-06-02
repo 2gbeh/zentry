@@ -5,7 +5,7 @@
 </p>
 
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue.svg)
-![React](https://img.shields.io/badge/React-19.x-58c4dc.svg)
+![React](https://img.shields.io/badge/React-18.x-58c4dc.svg)
 ![Next.js](https://img.shields.io/badge/Next-15.x-000.svg)
 
 ![NextJS](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)
