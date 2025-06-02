@@ -12,6 +12,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="description" content={APP.description} />
         <meta name="keywords" content={APP.keywords} />
         <meta name="owner" content="HWP Labs" />
@@ -19,13 +20,17 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta name="copyright" content="2017" />
         <meta name="theme-color" content={COLOR.black} />
         <meta name="robots" content="index,follow" />
-        <link
-          rel="manifest"
-          href="/manifest.json"
-          crossOrigin="use-credentials"
+        <meta name="msapplication-TileColor" content={COLOR.brand} />
+        <meta
+          name="msapplication-TileImage"
+          content="/msapplication-tile-image.png"
         />
-        <link rel="canonical" href={APP.url} />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta
+          name="apple-mobile-web-app-status-bar-style"
+          content={COLOR.black}
+        />
+        <meta name="apple-mobile-web-app-title" content={APP.name} />
         {/* OPEN GRAPH */}
         <meta property="og:site_name" content={APP.name} />
         <meta property="og:title" content={APP.tagline} />
@@ -38,7 +43,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta property="og:image:height" content="640" />
         <meta property="og:determiner" content="auto" />
         <meta property="og:locale" content="en_US" />
-        /* Twitter Card */
+        {/* TWITTER CARD */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={APP.tagline} />
         <meta name="twitter:url" content={APP.url} />
@@ -48,6 +53,19 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta name="twitter:image:alt" content="" />
         <meta name="twitter:image:width " content="1280" />
         <meta name="twitter:image:height " content="640" />
+        {/* LINKS */}
+        <link rel="canonical" href={APP.url} />
+        <link
+          rel="apple-touch-icon"
+          href="/apple-touch-icon.png"
+          type="image/png"
+        />
+        <link
+          rel="mask-icon"
+          href="/mask-icon.svg"
+          type="image/svg+xml"
+          color={COLOR.brand}
+        />
       </Head>
       <ReduxProvider>
         <Component {...pageProps} />
