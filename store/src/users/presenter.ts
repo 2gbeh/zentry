@@ -42,8 +42,8 @@ export class UserPresenter extends CommonPresenter {
     return this?.p?.verified_at;
   }
   // METHODS
-  setUser(user: P) {
-    this.p = user;
+  setUser(user: null | P | P[]) {
+    if (user) this.p = Array.isArray(user) ? user[0] : user;
   }
   getRoleText() {
     const role = this.role;

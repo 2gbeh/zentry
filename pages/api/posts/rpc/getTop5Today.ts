@@ -1,23 +1,21 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 // SHARED IMPORTS
-import { BaseApiResponseError } from "@/store/types";
+import { BaseApiResponse } from "@/store/types";
 import { ApiRoutesUtil as _ } from "@/utils/api-routes.util";
 // LOCAL IMPORTS
-import {
-  QueryPostResponse,
-  PostsRepository,
-} from "@/store/src/posts";
+import { QueryPostResponse, PostsRepository } from "@/store/src/posts";
 
 type RequestType = undefined;
-type ResponseType = QueryPostResponse["getTop5Today"] | BaseApiResponseError;
+type ResponseType = BaseApiResponse<QueryPostResponse["getTop5Today"]>;
 
 export default async function postsRpcGetTop5TodayHandler(
   req: NextApiRequest,
-  res: NextApiResponse<unknown>,
+  res: NextApiResponse<ResponseType>,
 ) {
   switch (req.method) {
     case "GET": {
-      const { status, data, error } = await new PostsRepository().getTop5Today();
+      const { status, data, error } =
+        await new PostsRepository().getTop5Today();
       const output = data ?? { error };
       return res.status(status).json(output);
     }

@@ -46,11 +46,17 @@ export const waitlistApi = baseApi.injectEndpoints({
       ],
     }),
     // CUSTOM ENDPOINTS
-    getTop3: builder.query<QueryWaitlistResponse["getTop3"], void>({
-      query: () => `${url}/rpc/getTop3`,
+    getCountAndTop3: builder.query<
+      QueryWaitlistResponse["getCountAndTop3"],
+      void
+    >({
+      query: () => `${url}/rpc/getCountAndTop3`,
       providesTags: (result) =>
         result
-          ? [...result.map(({ id }) => ({ type, id })), { type, id: "LIST" }]
+          ? [
+              ...(result?.data.map(({ id }) => ({ type, id })) ?? []),
+              { type, id: "LIST" },
+            ]
           : [{ type, id: "LIST" }],
     }),
   }),

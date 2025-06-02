@@ -28,12 +28,11 @@ export class PostPresenter extends CommonPresenter {
     return this?.p?.status;
   }
   // METHODS
-  setPost(post: P) {
-    this.p = post;
+  setPost(post: null | P | P[]) {
+    if (post) this.p = Array.isArray(post) ? post[0] : post;
   }
   getStatusText() {
     const status = this.status;
     return status ? ["Public", "Private"][status] : null;
   }
-
 }

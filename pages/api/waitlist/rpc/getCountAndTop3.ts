@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 // SHARED IMPORTS
-import { BaseApiResponseError } from "@/store/types";
+import { BaseApiResponse } from "@/store/types";
 import { ApiRoutesUtil as _ } from "@/utils/api-routes.util";
 // LOCAL IMPORTS
 import {
@@ -9,16 +9,17 @@ import {
 } from "@/store/src/waitlist";
 
 type RequestType = undefined;
-type ResponseType = QueryWaitlistResponse["getTop3"] | BaseApiResponseError;
+type ResponseType = BaseApiResponse<QueryWaitlistResponse["getCountAndTop3"]>;
 
-export default async function waitlistRpcGetTop3Handler(
+export default async function waitlistRpcGetCountAndTop3Handler(
   req: NextApiRequest,
   res: NextApiResponse<ResponseType>,
 ) {
   switch (req.method) {
     case "GET": {
-      const { status, data, error } = await new WaitlistRepository().getTop3();
-      const output = data ?? { error };
+      const { status, data, count, error } =
+        await new WaitlistRepository().getCountAndTop3();
+      const output = data ? { data, count } : { error };
       return res.status(status).json(output);
     }
     default:

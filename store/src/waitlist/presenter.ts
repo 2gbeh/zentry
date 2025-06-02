@@ -1,7 +1,7 @@
 import { CommonPresenter } from "../common/presenter";
 import { WaitlistEntity } from "./interfaces";
 
-type P = Partial<WaitlistEntity>
+type P = Partial<WaitlistEntity>;
 
 export class WaitlistPresenter extends CommonPresenter {
   constructor(protected p?: P) {
@@ -24,7 +24,7 @@ export class WaitlistPresenter extends CommonPresenter {
     return this?.p?.device?.geolocation;
   }
   // METHODS
-  setWaitlist(waitlist: P) {
-    this.p = waitlist;
+  setWaitlist(waitlist: P | P[]) {
+    this.p = Array.isArray(waitlist) ? waitlist[0] : waitlist;
   }
 }

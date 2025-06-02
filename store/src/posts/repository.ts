@@ -17,17 +17,16 @@ export class PostsRepository extends CommonRepository {
         title,
         created_at,
         updated_at,
-        users:user_id (
+        users(
           id,
           image_url,
-          name,
           username
         ),
-        organizations:organization_id (
+        organizations(
           id,
           name
         ),
-        projects:project_id (
+        projects(
           id,
           name
         )
@@ -35,8 +34,8 @@ export class PostsRepository extends CommonRepository {
       )
       .is("deleted_at", null)
       .eq("status", 1)
-      .gte("created_at", today)
-      .lt("created_at", tomorrow)
+      // .gte("created_at", today)
+      // .lt("created_at", tomorrow)
       .order("created_at", { ascending: false })
       .limit(5);
   }

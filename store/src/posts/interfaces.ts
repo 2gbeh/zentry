@@ -34,14 +34,13 @@ export type UpdatePostDto = Partial<CreatePostDto>;
 export interface QueryPostDto {}
 
 export interface QueryPostResponse {
-  getTop5Today: GetTop5TodayResponse[];
+  getTop5Today: Array<{
+    id: string;
+    title: string;
+    created_at: string;
+    updated_at: string | null;
+    users: Partial<UserEntity>[];
+    organizations: null | Partial<OrganizationEntity>[];
+    projects: null | Partial<ProjectEntity>[];
+  }>;
 }
-
-export type GetTop5TodayResponse = Pick<
-  PostEntity,
-  "id" | "title" | "created_at" | "updated_at"
-> & {
-  users: UserEntity;
-  organizations: null | OrganizationEntity;
-  projects: null | ProjectEntity;
-};

@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import Link from "next/link";
 import { InboxIcon } from "lucide-react";
 // SHARED IMPORTS
@@ -9,27 +8,21 @@ import {
   DropdownMenuTrigger,
 } from "@/components/shadcn/ui/dropdown-menu";
 import { Pressable } from "@/components/atoms/pressable";
-import { postsApi } from "@/store/services/postsApi";
 import { PostPresenter, PostsService } from "@/store/src/posts";
 import { UserPresenter } from "@/store/src/users/presenter";
+import { OrganizationPresenter } from "@/store/src/organizations/presenter";
+import { ProjectPresenter } from "@/store/src/projects/presenter";
 import { PATH } from "@/constants/PATH";
 // LOCAL IMPORTS
-import data from "./data.json";
+import { useNotificationsWidget } from "./states";
 
 const postPresenter = new PostPresenter();
 const userPresenter = new UserPresenter();
+const organizationPresenter = new OrganizationPresenter();
+const projectPresenter = new ProjectPresenter();
 
 export const NotificationsWidget: React.FC = () => {
-  // EXTERNAL STATES
-  const { data } = postsApi.useGetTop5TodayQuery();
-  // DERIVED STATES
-  const hasData = data && data?.length > 0;
-  // LOCAL STATES
-  const [mounted, setMounted] = useState(false);
-  // SIDE EFFECTS
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const { mounted, data, hasData } = useNotificationsWidget();
   if (!mounted) return null;
   // RENDER
   return (
@@ -51,14 +44,16 @@ export const NotificationsWidget: React.FC = () => {
         className="w-xs"
       >
         {hasData ? (
-          data.map((it, i) => {
+          data?.map((it, i) => {
             postPresenter.setPost(it);
             userPresenter.setUser(it.users);
+            organizationPresenter.setOrganization(it.organizations);
+            projectPresenter.setProject(it.projects);
             // render
             return (
               <Link
-                key={it.id}
-                href={PATH.postDetails(it.id)}
+                key={it.id!}
+                href={PATH.postDetails(it.id!)}
                 className="hover:bg-sidebar-accent hover:text-sidebar-accent-foreground flex flex-col items-start gap-2 border-b p-4 text-sm leading-tight whitespace-nowrap last:border-b-0"
               >
                 <div className="flex w-full items-center gap-2">
@@ -75,8 +70,8 @@ export const NotificationsWidget: React.FC = () => {
                   dangerouslySetInnerHTML={{
                     __html:
                       PostsService.formatOrgProject(
-                        it?.organizations?.name,
-                        it?.projects?.name,
+                        organizationPresenter?.name,
+                        projectPresenter?.name,
                       ) ?? "",
                   }}
                 ></span>

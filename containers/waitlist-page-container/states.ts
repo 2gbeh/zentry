@@ -14,8 +14,8 @@ const M = MOCK.home;
 export function useWaitlistPage() {
   const router = useRouter();
   // EXTERNAL STATES
-  const { data: getTop3QueryData, ...getTop3QueryState } =
-    waitlistApi.useGetTop3Query();
+  const { data: getCountAndTop3QueryData, ...getCountAndTop3QueryState } =
+    waitlistApi.useGetCountAndTop3Query();
   const [createMutation] = waitlistApi.useCreateMutation();
   // LOCAL STATES
   const [submitting, setSubmitting] = useState(false);
@@ -63,8 +63,8 @@ export function useWaitlistPage() {
   }
 
   return {
-    getTop3QueryData,
-    getTop3QueryState,
+    getCountAndTop3QueryData,
+    getCountAndTop3QueryState,
     submitting,
     form,
     onSubmit,

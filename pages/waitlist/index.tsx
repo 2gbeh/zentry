@@ -15,8 +15,13 @@ import {
 } from "@/containers/waitlist-page-container";
 
 export default function WaitlistPage() {
-  const { getTop3QueryData, getTop3QueryState, submitting, form, onSubmit } =
-    useWaitlistPage();
+  const {
+    getCountAndTop3QueryData,
+    getCountAndTop3QueryState,
+    submitting,
+    form,
+    onSubmit,
+  } = useWaitlistPage();
   // RENDER
   return (
     <>
@@ -25,9 +30,9 @@ export default function WaitlistPage() {
         <Layout.Header>
           <AvatarCascade
             title="Joined"
-            src={getTop3QueryData?.map(({ email }) => email!)}
-            total={getTop3QueryData?.length}
-            loading={getTop3QueryState.isLoading}
+            src={getCountAndTop3QueryData?.data?.map(({ email }) => email!)}
+            total={getCountAndTop3QueryData?.count}
+            loading={getCountAndTop3QueryState.isLoading}
           />
           <NotificationsWidget />
         </Layout.Header>

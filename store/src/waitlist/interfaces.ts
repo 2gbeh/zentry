@@ -19,5 +19,8 @@ export type UpdateWaitlistDto = Partial<CreateWaitlistDto>;
 export interface QueryWaitlistDto {}
 
 export interface QueryWaitlistResponse {
-  getTop3: Pick<WaitlistEntity, "id" | "email">[];
+  getCountAndTop3: {
+    data: Pick<WaitlistEntity, "id" | "email">[];
+    count?: null | number;
+  };
 }

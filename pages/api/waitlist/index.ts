@@ -17,11 +17,6 @@ export default async function waitlistHandler(
   res: NextApiResponse<ResponseType>,
 ) {
   switch (req.method) {
-    case "GET": {
-      const { status, data, error } = await new WaitlistRepository().getAll();
-      const output = data ?? { error };
-      return res.status(status).json(output);
-    }
     case "POST": {
       const input = req.body as RequestType;
       const { status, data, error } = await new WaitlistRepository().create(
