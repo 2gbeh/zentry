@@ -1,4 +1,4 @@
-import "./globals.css";
+import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 // SHARED IMPORTS
 import { ReduxProvider } from "@/store/provider";
