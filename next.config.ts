@@ -1,17 +1,27 @@
-import type { NextConfig } from "next";
+// next.config.ts
+import withPWA from 'next-pwa'
 
-const nextConfig: NextConfig = {
-  /* config options here */
+const isDev = process.env.NODE_ENV === 'development'
+
+const nextConfig = {
   reactStrictMode: true,
   async redirects() {
     return [
       {
-        source: "/",
-        destination: "/waitlist",
+        source: '/',
+        destination: '/waitlist',
         permanent: false,
       },
-    ];
+    ]
   },
-};
+}
 
-export default nextConfig;
+const withPWAConfig = withPWA({
+  dest: 'public',
+  register: true,
+  skipWaiting: true,
+  disable: isDev,
+})
+
+// Don't annotate this with `NextConfig` — let TypeScript infer it
+export default withPWAConfig(nextConfig)
