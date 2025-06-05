@@ -3,7 +3,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import { BaseApiResponse } from "@/store/types";
 import { ApiRoutesUtil as _ } from "@/utils/api-routes.util";
 // LOCAL IMPORTS
-import { QueryPostResponse, PostsRepository } from "@/store/src/posts";
+import { QueryPostResponse, PostsRepository } from "@/features/posts";
 
 type RequestType = undefined;
 type ResponseType = BaseApiResponse<QueryPostResponse["getTop5Today"]>;

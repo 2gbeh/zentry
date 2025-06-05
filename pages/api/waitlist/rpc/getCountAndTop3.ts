@@ -3,10 +3,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import { BaseApiResponse } from "@/store/types";
 import { ApiRoutesUtil as _ } from "@/utils/api-routes.util";
 // LOCAL IMPORTS
-import {
-  QueryWaitlistResponse,
-  WaitlistRepository,
-} from "@/store/src/waitlist";
+import { QueryWaitlistResponse, WaitlistRepository } from "@/features/waitlist";
 
 type RequestType = undefined;
 type ResponseType = BaseApiResponse<QueryWaitlistResponse["getCountAndTop3"]>;

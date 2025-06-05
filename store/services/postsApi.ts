@@ -4,7 +4,7 @@ import {
   CreatePostDto,
   UpdatePostDto,
   QueryPostResponse,
-} from "../src/posts";
+} from "@/features/posts";
 
 const url = "/posts";
 const type = "Posts" as const;

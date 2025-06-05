@@ -4,7 +4,7 @@ import {
   CreateWaitlistDto,
   UpdateWaitlistDto,
   QueryWaitlistResponse,
-} from "../src/waitlist";
+} from "@/features/waitlist";
 
 const url = "/waitlist";
 const type = "Waitlist" as const;

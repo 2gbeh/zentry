@@ -3,25 +3,24 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import { BaseApiResponse } from "@/store/types";
 import { ApiRoutesUtil as _ } from "@/utils/api-routes.util";
 // LOCAL IMPORTS
-import {
-  WaitlistEntity,
-  CreateWaitlistDto,
-  WaitlistRepository,
-} from "@/features/waitlist";
+import { PostEntity, CreatePostDto, PostsRepository } from "@/features/posts";
 
-type RequestType = CreateWaitlistDto;
-type ResponseType = BaseApiResponse<WaitlistEntity[]>;
+type RequestType = CreatePostDto;
+type ResponseType = BaseApiResponse<PostEntity[]>;
 
-export default async function waitlistHandler(
+export default async function postsHandler(
   req: NextApiRequest,
   res: NextApiResponse<ResponseType>,
 ) {
   switch (req.method) {
+    case "GET": {
+      const { status, data, error } = await new PostsRepository().getAll();
+      const output = data ?? { error };
+      return res.status(status).json(output);
+    }
     case "POST": {
       const input = req.body as RequestType;
-      const { status, data, error } = await new WaitlistRepository().create(
-        input,
-      );
+      const { status, data, error } = await new PostsRepository().create(input);
       const output = data ?? { error };
       return res.status(status).json(output);
     }

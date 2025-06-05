@@ -12,7 +12,7 @@ import {
   Jumbotron,
   Masthead,
   useWaitlistPage,
-} from "@/containers/waitlist-page-container";
+} from "@/features/waitlist";
 
 export default function WaitlistPage() {
   const {

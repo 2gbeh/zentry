@@ -8,10 +8,10 @@ import {
   DropdownMenuTrigger,
 } from "@/components/shadcn/ui/dropdown-menu";
 import { Pressable } from "@/components/atoms/pressable";
-import { PostPresenter, PostsService } from "@/store/src/posts";
-import { UserPresenter } from "@/store/src/users/presenter";
-import { OrganizationPresenter } from "@/store/src/organizations/presenter";
-import { ProjectPresenter } from "@/store/src/projects/presenter";
+import { PostPresenter, PostsService } from "@/features/posts";
+import { UserPresenter } from "@/features/users/presenter";
+import { OrganizationPresenter } from "@/features/organizations/presenter";
+import { ProjectPresenter } from "@/features/projects/presenter";
 import { PATH } from "@/constants/PATH";
 // LOCAL IMPORTS
 import { useNotificationsWidget } from "./states";
@@ -32,7 +32,7 @@ export const NotificationsWidget: React.FC = () => {
           <div className="relative">
             <InboxIcon size={16} />
             {hasData ? (
-              <div className="bg-contrast absolute -top-0.5 -right-0.5 size-2 rounded-full"></div>
+              <div className="bg-contrast absolute -right-0.5 -top-0.5 size-2 rounded-full"></div>
             ) : null}
           </div>
         </Pressable>
@@ -54,7 +54,7 @@ export const NotificationsWidget: React.FC = () => {
               <Link
                 key={it.id!}
                 href={PATH.postDetails(it.id!)}
-                className="hover:bg-sidebar-accent hover:text-sidebar-accent-foreground flex flex-col items-start gap-2 border-b p-4 text-sm leading-tight whitespace-nowrap last:border-b-0"
+                className="hover:bg-sidebar-accent hover:text-sidebar-accent-foreground flex flex-col items-start gap-2 whitespace-nowrap border-b p-4 text-sm leading-tight last:border-b-0"
               >
                 <div className="flex w-full items-center gap-2">
                   <span>{userPresenter?.username}</span>
@@ -62,11 +62,11 @@ export const NotificationsWidget: React.FC = () => {
                     {postPresenter.getTime().longTime}
                   </span>
                 </div>
-                <span className="leading-5 font-medium text-wrap">
+                <span className="text-wrap font-medium leading-5">
                   {postPresenter?.title}
                 </span>
                 <span
-                  className="text-muted-foreground line-clamp-2 w-[260px] text-xs whitespace-break-spaces"
+                  className="text-muted-foreground line-clamp-2 w-[260px] whitespace-break-spaces text-xs"
                   dangerouslySetInnerHTML={{
                     __html:
                       PostsService.formatOrgProject(
