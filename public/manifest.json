@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json.schemastore.org/web-manifest-combined.json",
+  "name": "Zentry",
+  "short_name": "Zentry",
+  "description": "Share Code Snippets",
+  "categories": [
+    "source code",
+    "typescript",
+    "react",
+    "next.js",
+    "css",
+    "sass",
+    "scss",
+    "php",
+    "laravel",
+    "postgres sql",
+    "supabase"
+  ],
+  "background_color": "#16B8F3",
+  "theme_color": "#0a0a0a",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "dir": "rtl",
+  "lang": "en-US",
+  "icons": [
+    {
+      "src": "/apple-touch-icon.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/msapplication-tile-image.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    },
+    {
+      "src": "/mask-icon.svg",
+      "type": "image/svg+xml",
+      "sizes": "683x683"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/ui/waitlist-page.png",
+      "type": "image/png",
+      "sizes": "485x879",
+      "label": "Tech News"
+    }
+  ]
+}
