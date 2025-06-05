@@ -27,7 +27,7 @@ export default function Document() {
         <meta name="apple-mobile-web-app-title" content={APP.name} />
         {/* OPEN GRAPH */}
         <meta property="og:site_name" content={APP.name} />
-        <meta property="og:title" content={APP.tagline} />
+        <meta property="og:title" content={APP.baseTitle} />
         <meta property="og:description" content={APP.description} />
         <meta property="og:type" content="website" />
         <meta property="og:url" content={APP.url} />
@@ -39,7 +39,7 @@ export default function Document() {
         <meta property="og:locale" content="en_US" />
         {/* TWITTER CARD */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={APP.tagline} />
+        <meta name="twitter:title" content={APP.baseTitle} />
         <meta name="twitter:url" content={APP.url} />
         <meta name="twitter:description" content={APP.description} />
         <meta name="twitter:image" content={`${APP.url}/social-preview.jpg`} />
