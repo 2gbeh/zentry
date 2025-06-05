@@ -3,7 +3,7 @@ export const APP = {
   slug: "zentry",
   name: "Zentry",
   tagline: "Share code snippets",
-  baseTitle: "Share Code Snippets - Next.js + Supabase",
+  baseTitle: "Share Code Snippets with Zentry",
   copyright: `© 2017 HWP Labs. All rights reserved.`,
   description: "Share Code Snippets - Next.js + Supabase",
   keywords:
