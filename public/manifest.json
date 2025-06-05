@@ -2,7 +2,7 @@
   "$schema": "https://json.schemastore.org/web-manifest-combined.json",
   "name": "Zentry",
   "short_name": "Zentry",
-  "description": "Share Code Snippets",
+  "description": "Share Code Snippets - Next.js + Supabase",
   "categories": [
     "source code",
     "typescript",
