@@ -1,5 +1,5 @@
 {
-  "name": "coyote",
+  "name": "zentry",
   "version": "0.0.1",
   "type": "module",
   "private": true,
@@ -22,6 +22,7 @@
     "class-variance-authority": "^0.7.1",
     "cn": "^0.5.2",
     "lucide-react": "^1.68.0",
+    "moment-timezone": "^0.6.6",
     "next": "16.4.3",
     "next-themes": "^0.4.6",
     "react": "19.3.1",
