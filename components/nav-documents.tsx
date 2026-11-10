@@ -16,13 +16,19 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/shadcn/ui/sidebar"
-import { MoreHorizontalIcon, FolderIcon, ShareIcon, Trash2Icon } from "lucide-react"
+import {
+  MoreHorizontalIcon,
+  FolderIcon,
+  ShareIcon,
+  Trash2Icon,
+} from "lucide-react"
 
 export function NavDocuments({
   items,
 }: {
   items: {
     title: string
+    alias?: string
     url: string
     icon: React.ReactNode
   }[]
@@ -36,7 +42,13 @@ export function NavDocuments({
           <SidebarMenuItem key={item.title}>
             <SidebarMenuButton render={<a href={item.url} />}>
               {item.icon}
-                <span dangerouslySetInnerHTML={{__html:item.title}}/>
+              <span dangerouslySetInnerHTML={{ __html: item.title }} />
+              {item.alias && (
+                <span
+                  className="_ml-auto text-xs text-muted-foreground"
+                  dangerouslySetInnerHTML={{ __html: item.alias }}
+                />
+              )}
             </SidebarMenuButton>
             <DropdownMenu>
               <DropdownMenuTrigger
@@ -47,8 +59,7 @@ export function NavDocuments({
                   />
                 }
               >
-                <MoreHorizontalIcon
-                />
+                <MoreHorizontalIcon />
                 <span className="sr-only">More</span>
               </DropdownMenuTrigger>
               <DropdownMenuContent
@@ -57,19 +68,16 @@ export function NavDocuments({
                 align={isMobile ? "end" : "start"}
               >
                 <DropdownMenuItem>
-                  <FolderIcon
-                  />
+                  <FolderIcon />
                   <span>Open</span>
                 </DropdownMenuItem>
                 <DropdownMenuItem>
-                  <ShareIcon
-                  />
+                  <ShareIcon />
                   <span>Share</span>
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem variant="destructive">
-                  <Trash2Icon
-                  />
+                  <Trash2Icon />
                   <span>Delete</span>
                 </DropdownMenuItem>
               </DropdownMenuContent>

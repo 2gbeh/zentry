@@ -66,22 +66,24 @@ const data = {
       icon: <ChartPieIcon />,
     },
     {
-      title: "Finances",
+      title: "Finance Ledger",
+      alias: "Fedora&trade;",
       url: PATH.nil,
       icon: <WalletIcon />,
     },
     {
-      title: "Designs",
+      title: "Design Templates",
       url: PATH.nil,
       icon: <PaletteIcon />,
     },
     {
-      title: "Episodes",
+      title: "Episode Scripts",
       url: PATH.nil,
       icon: <FileHeadphoneIcon />,
     },
     {
-      title: "Interviews",
+      title: "Interview Prep",
+      alias: "Coyote&trade;",
       url: PATH.interviews,
       icon: <ListVideoIcon />,
     },
@@ -93,12 +95,14 @@ const data = {
   ],
   navTertiary: [
     {
-      title: "Napkin&trade;",
+      title: "Journals",
+      alias: "Napkin&trade;",
       url: PATH.nil,
       icon: <LightbulbIcon />,
     },
     {
       title: "Credentials",
+      alias: "S3tcred&trade;",
       url: PATH.nil,
       icon: <FileBadgeIcon />,
     },

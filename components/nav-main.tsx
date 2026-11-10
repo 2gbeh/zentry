@@ -20,6 +20,7 @@ export function NavMain({
 }: {
   items: {
     title: string
+    alias?: string
     url: string
     icon?: React.ReactNode
   }[]
@@ -62,6 +63,12 @@ export function NavMain({
               <SidebarMenuButton tooltip={item.title}>
                 {item.icon}
                 <span dangerouslySetInnerHTML={{ __html: item.title }} />
+                {item.alias && (
+                  <span
+                    className="_ml-auto text-xs text-muted-foreground"
+                    dangerouslySetInnerHTML={{ __html: item.alias }}
+                  />
+                )}
               </SidebarMenuButton>
             </SidebarMenuItem>
           ))}

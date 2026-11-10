@@ -16,6 +16,7 @@ export function NavSecondary({
 }: {
   items: {
     title: string
+    alias?: string
     url: string
     icon: React.ReactNode
   }[]
