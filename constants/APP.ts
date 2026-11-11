@@ -4,8 +4,8 @@ export const APP = {
   name: "ZEntry DB",
   nameShort: "ZEntry",
   slug: "zentry",
-  title: "Personal Organizer Super App",
-  description: `Organize, Automate, and Analyze Your Records in One Place. Manage Journals, Credentials, Finances, and more.`,
+  title: "Personal Information Manager (PIM)",
+  description: `All-In-One PIM Solution. Organize, Automate, and Analyze Your Personal Records. Manage Journals, Credentials, Finances, and more.`,
   colors: {
     blue: "#0092dd",
     orange: "#dd4a00",

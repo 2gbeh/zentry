@@ -1,6 +1,6 @@
 # ZEntry DB
 
-Personal Organizer Super App
+Personal Information Manager (PIM)
 
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.x-007ACC.svg)
 ![React](https://img.shields.io/badge/React-19.x-61DAFB.svg)
@@ -27,11 +27,11 @@ pnpm run dev
 
 ### Modules
 
+- Journals / Napkin&trade;
+- Credentials / S3tcred&trade;
 - Finance Ledger / Fedora&trade;
 - Design Templates
 - Episode Scripts
 - Interview Prep / Coyote&trade;
 - Timesheet
-- Journals / Napkin&trade;
-- Credentials / S3tcred&trade;
 - Secrets
