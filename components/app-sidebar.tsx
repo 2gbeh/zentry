@@ -103,7 +103,7 @@ const data = {
     {
       title: "Credentials",
       alias: "S3tcred&trade;",
-      url: PATH.nil,
+      url: PATH.credentials,
       icon: <FileBadgeIcon />,
     },
     {

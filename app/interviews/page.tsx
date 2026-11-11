@@ -14,7 +14,7 @@ import {
 } from "@/components/shadcn/ui/card"
 
 import data from "@/data/data.json"
-import { Faqs } from "@/components/molecules/faqs"
+import { Faqs } from "@/components/species/interviews/ui/faqs"
 
 import type { Metadata } from "next"
 import { PATH } from "@/constants/PATH"
@@ -22,7 +22,7 @@ import { PATH } from "@/constants/PATH"
 export const metadata: Metadata = {
   title: "Interviews",
   alternates: { canonical: PATH.interviews },
-};
+}
 
 export default function InterviewsPage() {
   return (
@@ -36,7 +36,7 @@ export default function InterviewsPage() {
     >
       <AppSidebar variant="inset" />
       <SidebarInset>
-        <SiteHeader />
+        <SiteHeader title="Interviews" />
         <div className="flex flex-1 flex-col">
           <div className="@container/main flex flex-1 flex-col gap-2">
             <div className="flex flex-col gap-4 py-4 md:gap-6 md:py-6">

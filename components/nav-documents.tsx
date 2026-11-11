@@ -45,7 +45,7 @@ export function NavDocuments({
               <span dangerouslySetInnerHTML={{ __html: item.title }} />
               {item.alias && (
                 <span
-                  className="_ml-auto _text-xs text-accent"
+                  className="_ml-auto _text-xs text-contrast"
                   dangerouslySetInnerHTML={{ __html: item.alias }}
                 />
               )}

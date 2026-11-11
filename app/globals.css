@@ -47,7 +47,8 @@
   --radius-4xl: calc(var(--radius) * 2.6);
   /*  */
   --color-brand: #0092dd;
-  --color-accent: #dd4b00;
+  --color-contrast: #dd4b00;
+  --color-icon: #a1a1a1;
 }
 
 :root {
@@ -68,7 +69,7 @@
   --destructive: oklch(0.577 0.245 27.325);
   --border: oklch(0.922 0 0);
   --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
+  --ring: oklch(70.9% 0.00008 271.152);
   --chart-1: oklch(0.87 0 0);
   --chart-2: oklch(0.556 0 0);
   --chart-3: oklch(0.439 0 0);
@@ -131,6 +132,24 @@
   }
 }
 
-.debug {
-  @apply border border-red-500;
+@layer utilities {
+  .debug {
+    @apply border border-red-500;
+  }
+
+  .flex-cb {
+    @apply flex items-center justify-between;
+  }
+  .flex-cc {
+    @apply flex items-center justify-center;
+  }
+  .flex-ce {
+    @apply flex items-center justify-end;
+  }
+  .flex-cs {
+    @apply flex items-center justify-start;
+  }
+  .flex-cx {
+    @apply flex items-center;
+  }
 }
