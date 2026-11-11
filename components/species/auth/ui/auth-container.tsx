@@ -15,7 +15,11 @@ export function AuthContainer({
   ...props
 }: Props) {
   return (
-    <form className={cn("flex flex-col gap-6", className)} {...props} autoComplete="off">
+    <form
+      className={cn("flex flex-col gap-6", className)}
+      {...props}
+      autoComplete="off"
+    >
       <FieldGroup>
         <div className="flex flex-col items-center gap-1 text-center">
           <h1 className="text-2xl font-bold">{title}</h1>

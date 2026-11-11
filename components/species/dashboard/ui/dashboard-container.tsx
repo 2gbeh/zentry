@@ -1,4 +1,11 @@
 import { PropsWithChildren } from "react"
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/shadcn/ui/card"
 import { SiteHeader } from "@/components/site-header"
 
 interface Props extends PropsWithChildren {
@@ -15,5 +22,34 @@ export const DashboardContainer = ({ children, title }: Props) => {
         </div>
       </div>
     </>
+  )
+}
+
+export const DashboardContent = ({ children }: PropsWithChildren) => {
+  return <div className="px-4 lg:px-6">{children}</div>
+}
+
+interface DashboardCardProps extends PropsWithChildren {
+  title?: string
+  description?: string
+}
+
+export const DashboardCard = ({
+  children,
+  title,
+  description,
+}: DashboardCardProps) => {
+  return (
+    <Card className="@container/card">
+      {title || description ? (
+        <CardHeader>
+          {title ? <CardTitle>{title}</CardTitle> : null}
+          {description ? (
+            <CardDescription>{description}</CardDescription>
+          ) : null}
+        </CardHeader>
+      ) : null}
+      <CardContent>{children}</CardContent>
+    </Card>
   )
 }

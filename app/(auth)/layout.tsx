@@ -10,9 +10,7 @@ export default function AuthLayout({
       <div className="flex flex-col gap-4 p-6 md:p-10">
         <Logo />
         <div className="flex flex-1 items-center justify-center">
-          <div className="w-full max-w-sm">
-            {children}
-          </div>
+          <div className="w-full max-w-sm">{children}</div>
         </div>
       </div>
       <div className="relative hidden bg-muted lg:block">

@@ -5,10 +5,9 @@ import { useRouter } from "next/navigation"
 import { Field } from "@/components/shadcn/ui/field"
 import { FieldInput } from "@/components/atoms/field-input"
 import { SubmitButton } from "@/components/atoms/submit-button"
-import { OAuthButtons } from "./oauth-buttons"
+import { Hyperlink } from "@/components/atoms/hyperlink"
 import { sleep } from "@/utils/sleep"
 import { PATH } from "@/constants/PATH"
-import { Hyperlink } from "@/components/atoms/hyperlink"
 
 export function ForgotPasswordForm() {
   const router = useRouter()
