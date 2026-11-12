@@ -6,6 +6,7 @@ import {
   IconClockHour9,
   IconCloudComputing,
   IconCode,
+  IconInfoCircle,
   IconPhoneCall,
   IconUser,
   IconVideo,
@@ -58,13 +59,13 @@ const renderHeaderBadges = (
   <div className="flex-cs flex-wrap gap-2">
     <Badge variant="outline">
       <IconUser />
-      Nicole
+      Nicole (Recruiter)
     </Badge>
-    <Badge variant="outline">
+    {/* <Badge variant="success">
       <IconPhoneCall />
       (760)-488-0679
-    </Badge>
-    <Badge variant="outline" title="http://meet.google.com/mvf-wbck-vvg">
+    </Badge> */}
+    <Badge variant="success" title="http://meet.google.com/mvf-wbck-vvg">
       <IconVideo />
       Join
     </Badge>
@@ -105,7 +106,7 @@ const renderContent = (
       </a>
     </div>
     <div className="flex-cs line-clamp-1 gap-2">
-      <IconWorldSearch className="size-4" />
+      <IconInfoCircle className="size-4" />
       <span>Conflict-Free Life Optimization Platform</span>
     </div>
   </>

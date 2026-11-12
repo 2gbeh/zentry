@@ -9,6 +9,7 @@ import {
   IconDeviceMobile,
   IconHome,
   IconMail,
+  IconRocket,
   IconSchool,
   IconSpy,
   IconTemperatureSun,
@@ -58,9 +59,10 @@ const renderHeaderBadges = (
   <div className="flex-cs flex-wrap gap-2">
     <Badge variant="outline">
       <IconCake />
-      June 5th, 1976 (50y)
+      June 5th
+      {/* June 5th, 1976 (50y) */}
     </Badge>
-    <Badge variant="destructive">
+    <Badge variant="outline">
       <IconSpy />
       669
     </Badge>
@@ -77,7 +79,7 @@ const renderFooterBadges = (
       <IconClockHour9 />
       60-80/h
     </Badge>
-    <Badge variant="outline">
+    <Badge variant="warning">
       <IconTemperatureSun />
       19C, 66F
     </Badge>
@@ -86,7 +88,10 @@ const renderFooterBadges = (
 
 const renderTitle = (
   <figure className="flex-cs debug_ mt-4 gap-4">
-    <img src="/profiles/segun-alabi.png" alt="" width={70} />
+    <div className="relative">
+      <img src="/profiles/segun-alabi.png" alt="" width={70} />
+      <span className="absolute right-0.5 bottom-0.5 size-4 rounded-full border-2 border-white bg-green-400" title="GHC"></span>
+    </div>
     <figcaption className="text-2xl font-semibold tabular-nums @[250px]/card:text-3xl">
       Segun Alabi,
       <br />
