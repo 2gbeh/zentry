@@ -5,6 +5,7 @@ import {
   EllipsisVerticalIcon,
   CircleUserRoundIcon,
   LogOutIcon,
+  HatGlassesIcon,
 } from "lucide-react"
 import {
   Avatar,
@@ -14,6 +15,7 @@ import {
 import {
   DropdownMenu,
   DropdownMenuContent,
+  DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
@@ -39,6 +41,17 @@ export function MenuUser() {
   const handleLogout = async () => {
     if (confirm("Are you sure?")) {
       router.replace(PATH.login)
+    }
+  }
+
+  const handleSecrets = async () => {
+    const pin = prompt("Enter Pin:")
+    if (!pin) return
+
+    if (pin === process.env.NEXT_PUBLIC_SECRETS_PIN) {
+      router.push(PATH.nil)
+    } else {
+      alert("Unauthorized!")
     }
   }
 
@@ -69,10 +82,16 @@ export function MenuUser() {
             align="end"
             sideOffset={4}
           >
-            <DropdownMenuItem>
-              <CircleUserRoundIcon />
-              My Profile
-            </DropdownMenuItem>
+            <DropdownMenuGroup>
+              <DropdownMenuItem>
+                <CircleUserRoundIcon />
+                My Profile
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={handleSecrets}>
+                <HatGlassesIcon />
+                My Secrets
+              </DropdownMenuItem>
+            </DropdownMenuGroup>
             <DropdownMenuSeparator />
             <DropdownMenuItem onClick={handleLogout}>
               <LogOutIcon />

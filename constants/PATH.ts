@@ -11,6 +11,7 @@ export const PATH = {
   home: "/",
   login: "/",
   forgotPassword: "/forgot-password",
+  secrets: "/secrets",
   ...PATH_PROTECTED,
 } as const satisfies Record<string, PathType>
 

@@ -32,6 +32,20 @@ export const MENU = {
       Icon: ChartPieIcon,
     },
     {
+      slug: "journals",
+      title: "Journals",
+      alias: "Napkin&trade;",
+      url: PATH.nil,
+      Icon: LightbulbIcon,
+    },
+    {
+      slug: "credentials",
+      title: "Credentials",
+      alias: "S3tcred&trade;",
+      url: PATH.credentials,
+      Icon: FileBadgeIcon,
+    },
+    {
       slug: "finances",
       title: "Finance Ledger",
       alias: "Fedora&trade;",
@@ -69,26 +83,6 @@ export const MENU = {
       title: "Timesheet",
       url: PATH.nil,
       Icon: ClipboardClockIcon,
-    },
-    {
-      slug: "journals",
-      title: "Journals",
-      alias: "Napkin&trade;",
-      url: PATH.nil,
-      Icon: LightbulbIcon,
-    },
-    {
-      slug: "credentials",
-      title: "Credentials",
-      alias: "S3tcred&trade;",
-      url: PATH.credentials,
-      Icon: FileBadgeIcon,
-    },
-    {
-      slug: "secrets",
-      title: "Secrets",
-      url: PATH.nil,
-      Icon: HatGlassesIcon,
     },
   ],
   secondary: [
