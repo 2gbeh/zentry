@@ -1,5 +1,5 @@
 import { SidebarInset, SidebarProvider } from "@/components/shadcn/ui/sidebar"
-import { AppSidebar } from "@/components/app-sidebar"
+import { AppSidebar } from "@/components/organisms/app-sidebar"
 
 export default function MainLayout({
   children,

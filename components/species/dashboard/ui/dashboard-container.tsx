@@ -6,7 +6,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/shadcn/ui/card"
-import { SiteHeader } from "@/components/site-header"
+import { Header } from "@/components/organisms/header"
 
 interface Props extends PropsWithChildren {
   title?: string
@@ -15,7 +15,7 @@ interface Props extends PropsWithChildren {
 export const DashboardContainer = ({ children, title }: Props) => {
   return (
     <>
-      <SiteHeader title={title} />
+      <Header title={title} />
       <div className="flex flex-1">
         <div className="@container/main flex flex-1 flex-col gap-4 py-4 md:gap-6 md:py-6">
           {children}

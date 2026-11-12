@@ -1,5 +1,11 @@
 "use client"
 
+import { useRouter } from "next/navigation"
+import {
+  EllipsisVerticalIcon,
+  CircleUserRoundIcon,
+  LogOutIcon,
+} from "lucide-react"
 import {
   Avatar,
   AvatarFallback,
@@ -8,9 +14,7 @@ import {
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuGroup,
   DropdownMenuItem,
-  DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/shadcn/ui/dropdown-menu"
@@ -21,24 +25,14 @@ import {
   useSidebar,
 } from "@/components/shadcn/ui/sidebar"
 import { PATH } from "@/constants/PATH"
-import {
-  EllipsisVerticalIcon,
-  CircleUserRoundIcon,
-  CreditCardIcon,
-  Settings2Icon,
-  LogOutIcon,
-} from "lucide-react"
-import { useRouter } from "next/navigation"
 
-export function NavUser({
-  user,
-}: {
-  user: {
-    name: string
-    email: string
-    avatar: string
-  }
-}) {
+const user = {
+  name: "Emanuel",
+  email: "etugbeh@outlook.com",
+  avatar: "/images/webmaster.png",
+}
+
+export function MenuUser() {
   const router = useRouter()
   const { isMobile } = useSidebar()
 
@@ -47,7 +41,6 @@ export function NavUser({
       router.replace(PATH.login)
     }
   }
-
 
   return (
     <SidebarMenu>
@@ -76,12 +69,10 @@ export function NavUser({
             align="end"
             sideOffset={4}
           >
-            <DropdownMenuGroup>
-              <DropdownMenuItem>
-                <CircleUserRoundIcon />
-                My Profile
-              </DropdownMenuItem>
-            </DropdownMenuGroup>
+            <DropdownMenuItem>
+              <CircleUserRoundIcon />
+              My Profile
+            </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem onClick={handleLogout}>
               <LogOutIcon />

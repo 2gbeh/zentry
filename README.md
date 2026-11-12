@@ -32,6 +32,7 @@ pnpm run dev
 - Finance Ledger / Fedora&trade;
 - Design Templates
 - Episode Scripts
+- Presentation Slides / Cascade&trade;
 - Interview Prep / Coyote&trade;
 - Timesheet
 - Secrets

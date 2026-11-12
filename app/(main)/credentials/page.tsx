@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { DataTable } from "@/components/data-table"
+import { DataTable } from "@/components/molecules/data-table"
 import { DashboardContainer } from "@/components/species/dashboard/ui/dashboard-container"
 import { PATH } from "@/constants/PATH"
 //
