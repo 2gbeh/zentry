@@ -7,6 +7,7 @@ import {
   CardTitle,
 } from "@/components/shadcn/ui/card"
 import { Header } from "@/components/organisms/header"
+import { cn } from "@/components/shadcn/utils"
 
 interface Props extends PropsWithChildren {
   title?: string
@@ -25,8 +26,15 @@ export const DashboardContainer = ({ children, title }: Props) => {
   )
 }
 
-export const DashboardContent = ({ children }: PropsWithChildren) => {
-  return <div className="px-4 lg:px-6">{children}</div>
+interface DashboardContentProps extends PropsWithChildren {
+  className?: string
+}
+
+export const DashboardContent = ({
+  children,
+  className,
+}: DashboardContentProps) => {
+  return <div className={cn("px-4 lg:px-6", className)}>{children}</div>
 }
 
 interface DashboardCardProps extends PropsWithChildren {

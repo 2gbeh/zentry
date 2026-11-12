@@ -5,7 +5,7 @@ export function OAuthButtons() {
   return (
     <>
       <FieldSeparator>Or continue with</FieldSeparator>
-      <Field className="grid grid-cols-2 gap-2">
+      <Field className="grid grid-cols-2 gap-3">
         <Button variant="outline" type="button">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
             <path

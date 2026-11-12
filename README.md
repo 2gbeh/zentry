@@ -35,4 +35,4 @@ pnpm run dev
 - Presentation Slides / Cascade&trade;
 - Interview Prep / Coyote&trade;
 - Timesheet
-- Secrets
+- Secrets 🔴

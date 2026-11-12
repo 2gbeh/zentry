@@ -132,6 +132,12 @@
   }
 }
 
+@layer components {
+  .link-text {
+    @apply self-start text-brand underline underline-offset-3;
+  }
+}
+
 @layer utilities {
   .debug {
     @apply border border-red-500;
@@ -151,5 +157,8 @@
   }
   .flex-cx {
     @apply flex items-center;
+  }
+  .flex-col-sx {
+    @apply flex flex-col items-start;
   }
 }
