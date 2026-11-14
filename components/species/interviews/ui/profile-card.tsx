@@ -1,18 +1,16 @@
+import { clsx } from "cn"
 import {
   type TablerIcon,
   IconBallBasketball,
   IconBrandGithub,
   IconBrandLinkedin,
   IconCake,
-  IconCalendarDollar,
-  IconClockHour9,
+  IconClockDollar,
   IconDeviceMobile,
   IconHome,
   IconMail,
-  IconRocket,
   IconSchool,
   IconSpy,
-  IconTemperatureSun,
   IconWorldWww,
 } from "@tabler/icons-react"
 import { Badge } from "@/components/shadcn/ui/badge"
@@ -24,6 +22,11 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/shadcn/ui/card"
+//
+import { transformProfile } from "../utils/profile-utils"
+import { data } from "../data/profiles"
+
+const item = transformProfile(data[0])
 
 export function ProfileCard() {
   return (
@@ -42,12 +45,23 @@ export function ProfileCard() {
       </CardContent>
       <CardFooter className="flex-col-sx gap-4">
         <div className="flex flex-wrap gap-2 text-muted-foreground">
-          {renderFooterItem(IconDeviceMobile, "(610)-557-9496")}
-          {renderFooterItem(IconMail, "segunalabi383@gmail.com")}
-          {renderFooterItem(IconBrandLinkedin, "in/segun-alabi-baa17225")}
-          {renderFooterItem(IconBrandGithub, "segunalabi383")}
-          {renderFooterItem(IconWorldWww, "portfolio-segun.vercel.app")}
-          {renderFooterItem(IconBallBasketball, "Basketball, Gym, Reading")}
+          {item.tel ? renderFooterItem(IconDeviceMobile, item.tel) : null}
+
+          {renderFooterItem(IconMail, item.email)}
+
+          {renderFooterItem(IconBrandLinkedin, item.linkedInUrlShort)}
+
+          {item.githubUrlShort
+            ? renderFooterItem(IconBrandGithub, item.githubUrlShort)
+            : null}
+
+          {item.websiteShort
+            ? renderFooterItem(IconWorldWww, item.websiteShort)
+            : null}
+
+          {item.hobbies
+            ? renderFooterItem(IconBallBasketball, item.hobbies)
+            : null}
         </div>
         {renderFooterBadges}
       </CardFooter>
@@ -57,31 +71,42 @@ export function ProfileCard() {
 
 const renderHeaderBadges = (
   <div className="flex-cs flex-wrap gap-2">
-    <Badge variant="outline">
-      <IconCake />
-      June 5th
-      {/* June 5th, 1976 (50y) */}
-    </Badge>
-    <Badge variant="outline">
-      <IconSpy />
-      669
-    </Badge>
+    {item.birthDate ? (
+      <Badge
+        variant="outline"
+        title={`${item.birthDate} (${item.age}y)`}
+        className="cursor-default"
+      >
+        <IconCake />
+        {item.displayBirthDate}
+      </Badge>
+    ) : null}
+    {item.ssn ? (
+      <Badge
+        variant="outline"
+        title="Social Security Number"
+        className="cursor-help"
+      >
+        <IconSpy />
+        {item.ssn}
+      </Badge>
+    ) : null}
   </div>
 )
 
 const renderFooterBadges = (
   <div className="flex-cs flex-wrap gap-2">
     <Badge variant="outline">
-      <IconCalendarDollar />
-      140-160k/y
+      <IconClockDollar />
+      {item.salaryRange.year}
     </Badge>
     <Badge variant="outline">
-      <IconClockHour9 />
-      60-80/h
+      <IconClockDollar />
+      {item.salaryRange.month}
     </Badge>
-    <Badge variant="warning">
-      <IconTemperatureSun />
-      19C, 66F
+    <Badge variant="outline">
+      <IconClockDollar />
+      {item.salaryRange.hour}
     </Badge>
   </div>
 )
@@ -89,13 +114,28 @@ const renderFooterBadges = (
 const renderTitle = (
   <figure className="flex-cs debug_ mt-4 gap-4">
     <div className="relative">
-      <img src="/profiles/segun-alabi.png" alt="" width={70} />
-      <span className="absolute right-0.5 bottom-0.5 size-4 rounded-full border-2 border-white bg-green-400" title="GHC"></span>
+      <img
+        src={`/profiles/${item.socials.linkedIn.avatar}`}
+        alt=""
+        width={70}
+        className="rounded-full border-2"
+      />
+      <span
+        className={clsx(
+          "absolute right-0.5 bottom-0.5 size-4 cursor-help rounded-full border-2 border-white",
+          item.gch ? "bg-green-400" : "bg-blue-400"
+        )}
+        title={item.gch ? "Green Card Holder" : "US Citizen"}
+      ></span>
     </div>
     <figcaption className="text-2xl font-semibold tabular-nums @[250px]/card:text-3xl">
-      Segun Alabi,
-      <br />
-      Eniola
+      {item.fullName}
+      {item.otherName ? (
+        <>
+          <br />
+          {item.otherName}
+        </>
+      ) : null}
     </figcaption>
   </figure>
 )
@@ -104,11 +144,21 @@ const renderContent = (
   <>
     <div className="flex-cs line-clamp-1 gap-2">
       <IconHome className="size-4" />
-      <span>227 Park Ave (Apt 3B) East Orange, NJ, 07017</span>
+      <span>
+        {item.address}
+        {item.weather ? (
+          <>
+            <br />[{item.weather}]
+          </>
+        ) : null}
+      </span>
     </div>
     <div className="flex-cs line-clamp-1 gap-2">
       <IconSchool className="size-4" />
-      <span>Princeton University, NJ [09/2011 - 04/2015]</span>
+      <span>
+        {item.displayEducation}
+        <br />[{item.education.duration}]
+      </span>
     </div>
   </>
 )

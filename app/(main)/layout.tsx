@@ -8,6 +8,7 @@ export default function MainLayout({
 }>) {
   return (
     <SidebarProvider
+      defaultOpen={process.env.NODE_ENV !== "development"}
       style={
         {
           "--sidebar-width": "calc(var(--spacing) * 72)",

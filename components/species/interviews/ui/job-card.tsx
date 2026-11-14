@@ -1,16 +1,16 @@
+"use client"
+
 import {
   type TablerIcon,
   IconBrandAdobeIllustrator,
   IconBriefcase,
-  IconCalendarDollar,
-  IconClockHour9,
+  IconClockDollar,
   IconCloudComputing,
   IconCode,
   IconInfoCircle,
   IconPhoneCall,
   IconUser,
   IconVideo,
-  IconWorldSearch,
 } from "@tabler/icons-react"
 import { Badge } from "@/components/shadcn/ui/badge"
 import {
@@ -21,6 +21,11 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/shadcn/ui/card"
+//
+import { transformJob } from "../utils/job-utils"
+import { data } from "../data/jobs"
+
+const item = transformJob(data[1])
 
 export function JobCard() {
   return (
@@ -38,16 +43,10 @@ export function JobCard() {
         {renderContent}
       </CardContent>
       <CardFooter className="flex-col-sx gap-4">
-        <div className="flex flex-wrap gap-2 text-muted-foreground">
-          {renderFooterItem(
-            IconCode,
-            "TypeScript, React, React Native, Node.js, SQL"
-          )}
-          {renderFooterItem(IconCloudComputing, "AWS/GCP, Segment")}
-          {renderFooterItem(
-            IconBrandAdobeIllustrator,
-            "AI/LLM, OpenAI/Anthropic, LangChain, RAG, Agentic WF, Vector DB (Pinecone, Milvus, pgvector)"
-          )}
+        <div className="flex flex-col gap-2 text-muted-foreground">
+          {renderFooterItem(IconCode, item.job.techStack.lang)}
+          {renderFooterItem(IconCloudComputing, item.job.techStack.cloud)}
+          {renderFooterItem(IconBrandAdobeIllustrator, item.job.techStack.ai)}
         </div>
         {renderFooterBadges}
       </CardFooter>
@@ -59,60 +58,77 @@ const renderHeaderBadges = (
   <div className="flex-cs flex-wrap gap-2">
     <Badge variant="outline">
       <IconUser />
-      Nicole (Recruiter)
+      {item.recruiter.displayName}
     </Badge>
-    {/* <Badge variant="success">
-      <IconPhoneCall />
-      (760)-488-0679
-    </Badge> */}
-    <Badge variant="success" title="http://meet.google.com/mvf-wbck-vvg">
-      <IconVideo />
-      Join
+    <Badge
+      variant="success"
+      title="Copy"
+      onClick={() =>
+        prompt(
+          item.recruiter.isPhoneCall ? "Phone Number" : "Meeting Link",
+          item.recruiter.meetingUri
+        )
+      }
+      className="cursor-pointer"
+    >
+      {item.recruiter.isPhoneCall ? (
+        <>
+          <IconPhoneCall /> Call
+        </>
+      ) : (
+        <>
+          <IconVideo /> Join
+        </>
+      )}
     </Badge>
   </div>
 )
 
 const renderFooterBadges = (
   <div className="flex-cs flex-wrap gap-2">
-    <Badge variant="outline">
-      <IconCalendarDollar />
-      200-250k/y
-    </Badge>
-    <Badge variant="outline">
-      <IconClockHour9 />
-      60-80/h
-    </Badge>
+    {item.job.salaryRange?.actual ? (
+      <Badge variant="outline">
+        <IconClockDollar />
+        {item.job.salaryRange.actual}
+      </Badge>
+    ) : null}
+    {item.job.salaryRange?.expected ? (
+      <Badge variant="warning">
+        <IconClockDollar />
+        {item.job.salaryRange.expected}
+      </Badge>
+    ) : null}
   </div>
 )
 
 const renderTitle = (
-  <figure className="flex-cs debug_ mt-4 min-h-[75px] gap-4">
-    <figcaption className="text-2xl font-semibold tabular-nums @[250px]/card:text-3xl">
-      Attilio
-    </figcaption>
-  </figure>
+  <div className="flex-cs debug_ mt-8 min-h-[50px] text-2xl font-semibold tabular-nums @[250px]/card:text-3xl">
+    <a
+      href={item.company.website || undefined}
+      target="_blank"
+      className={item.company.website && "link-text"}
+    >
+      {item.company.name}
+    </a>
+  </div>
 )
 
 const renderContent = (
   <>
     <div className="flex-cs line-clamp-1 gap-2">
-      <IconBriefcase className="size-4" />
-      <a
-        href="https://drive.google.com/file/d/1iUZueSK_eO3r8HBatIZe45IDNwg-7ag4/view?usp=drive_link"
-        target="_blank"
-        className="link-text"
-      >
-        Founding AI Full Stack Engineer
-      </a>
+      <IconInfoCircle className="size-4 min-w-[16px]" />
+      <span>{item.company.about}</span>
     </div>
     <div className="flex-cs line-clamp-1 gap-2">
-      <IconInfoCircle className="size-4" />
-      <span>Conflict-Free Life Optimization Platform</span>
+      <IconBriefcase className="size-4 min-w-[16px]" />
+      <a href={item.job.url || undefined} target="_blank" className="link-text">
+        {item.job.role}
+      </a>
     </div>
   </>
 )
 
-const renderFooterItem = (Icon: TablerIcon, text: string) => (
+const renderFooterItem = (Icon: TablerIcon, text?: string) => (
   <div className="flex-cs gap-2">
     <Icon size={16} className="min-w-[16px]" />
     <span>{text}</span>
