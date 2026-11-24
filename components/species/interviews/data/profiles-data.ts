@@ -1,32 +1,63 @@
-import { ProfileDto } from "@/types/profile-dto";
+import { ProfileDto } from "../types"
 
-export const marcelMcloyProfile:ProfileDto = {
-  fullName: "Marcel Mcloy",
-  birthDate: "1976-06-05",
-  tel: "1(610) 557-9496",
-  email: "segunalabi383@gmail.com",
-  address: "227 Park Ave (Apt 3B) East Orange, New Jersey, 07017",
-  education: {
-    degree: "Bachelor of Science in Computer Science",
-    institution: "Princeton University, New Jersey",
-    year: "2011 - 2015",
+export const profilesData: ProfileDto[] = [
+  {
+    fullName: "Justin Pallay",
+    tel: "1(412) 674 2446",
+    email: "justinpallayleaps@gmail.com",
+    address: "16 Meadows Court, Hawley, PA 18428",
+    birthDate: "Oct 31st, 1984",
+    education: {
+      institution: "Penn State University",
+      degree: "Bachelor of Science in Computer Science",
+      location: "University Park, PA",
+      duration: "09/2010 - 05/2014",
+    },
+    socials: {
+      linkedIn: {
+        avatar: "justin-pallay.jpg",
+        url: "https://www.linkedin.com/in/justin-pallay",
+      },
+      github: {
+        url: "https://github.com/jpallayleaps",
+      },
+    },
+    website: "https://jpallay-portfolio.vercel.app/", 
+    ssn: 942,
+    gch: false,
   },
-  hobbies: ["Basketball", "Gym", "Reading"],
-  workAuth: "Green Card Holder (GCH)",
-  hourlyRate: "$60-$80/hour",
-  baseSalary: "$160k-$180k/year",
-  urls: {
-    linkedIn: "https://www.linkedin.com/in/segun-alabi-baa17225",
-    gitHub: "https://github.com/segunalabi383",
+  {
+    fullName: "Segun Alabi",
+    otherName: "Eniola",
+    birthDate: "Jun 5th, 1976",
+    tel: "(610)-557-9496",
+    email: "segunalabi383@gmail.com",
+    address: "227 Park Ave (Apt 3B) East Orange, NJ, 07017",
+    weather: "19C, 66F",
+    education: {
+      institution: "Princeton University",
+      degree: "Bachelor of Science in Computer Science",
+      location: "NJ",
+      duration: "09/2011 - 04/2015",
+    },
+    socials: {
+      linkedIn: {
+        avatar: "segun-alabi.png",
+        url: "https://linkedin.com/in/segun-alabi-baa17225/",
+      },
+      github: {
+        url: "https://github.com/segunalabi383",
+      },
+    },
     website: "https://portfolio-segun.vercel.app",
-  },
-  accounts: {
     zadarma: {
       username: "22790",
       password: "OChT65anhX",
-    },
-  },
-  careerSummaryRichText: `
+    },    
+    hobbies: "Basketball, Gym, Reading",
+    ssn: 669,
+    gch: true,
+    careerSummary: `
 Hello %recruiterName, I'm $profileName, I am based in $displayAddress.
 <p></p>
 I've been a Software Engineer for over 10y now, <br/>
@@ -57,4 +88,5 @@ I do also have experience setting up Cloud Deployment & Data Pipelines with; <br
 # TensorFlow Developer Certificate Google (2024) <br/>
 # Certified Kubernetes Administrator (CKA) CNCF (2023) <br/>
 `,
-}
+  },
+]

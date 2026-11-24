@@ -4,7 +4,7 @@ import {
   DashboardContainer,
   DashboardContent,
 } from "@/components/species/dashboard/ui/dashboard-container"
-import { Faqs } from "@/components/species/interviews/ui/faqs"
+import { FaqsAccordion } from "@/components/species/interviews/ui/faqs-accordion"
 import { PATH } from "@/constants/PATH"
 //
 import { Toolbar } from "@/components/species/interviews/ui/toolbar"
@@ -28,7 +28,7 @@ export default function InterviewsPage() {
       </div>
       <DashboardContent>
         <DashboardCard title="FAQs" description="Frequently asked questions">
-          <Faqs />
+          <FaqsAccordion />
         </DashboardCard>
       </DashboardContent>
     </DashboardContainer>

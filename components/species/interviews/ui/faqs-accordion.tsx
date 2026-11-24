@@ -5,15 +5,17 @@ import {
   AccordionTrigger,
 } from "@/components/shadcn/ui/accordion"
 //
-import { data } from "../data/faqs"
+import { faqsData } from "../data/faqs-data"
 
-export function Faqs() {
+export function FaqsAccordion() {
   return (
-    <Accordion>
-      {data.map(({ q, a }, i) => (
+    <Accordion multiple>
+      {faqsData.map(({ q, a }, i) => (
         <AccordionItem key={i}>
           <AccordionTrigger>{q}</AccordionTrigger>
-          <AccordionContent>{a}</AccordionContent>
+          <AccordionContent>
+            <div dangerouslySetInnerHTML={{ __html: a || "" }} />
+          </AccordionContent>
         </AccordionItem>
       ))}
     </Accordion>

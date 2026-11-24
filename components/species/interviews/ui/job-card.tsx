@@ -22,25 +22,28 @@ import {
   CardTitle,
 } from "@/components/shadcn/ui/card"
 //
-import { transformJob } from "../utils/job-utils"
-import { data } from "../data/jobs"
-
-const item = transformJob(data[1])
+import { useInterviewStore } from "../store"
+import { TransformedJobDto, transformJob } from "../utils/job-utils"
+import { jobsData } from "../data/jobs-data"
 
 export function JobCard() {
+  const jobId = useInterviewStore((s) => s.jobId)
+  const job = jobsData[Number(jobId)]
+  const item = transformJob(job)
+
   return (
     <Card className="@container/card">
       <CardHeader>
         <CardDescription>
           <div className="flex-cb">
             <span>Job Details</span>
-            {renderHeaderBadges}
+            {renderHeaderBadges(item)}
           </div>
         </CardDescription>
-        <CardTitle>{renderTitle}</CardTitle>
+        <CardTitle>{renderTitle(item)}</CardTitle>
       </CardHeader>
       <CardContent className="flex-col-sx gap-2 font-medium">
-        {renderContent}
+        {renderContent(item)}
       </CardContent>
       <CardFooter className="flex-col-sx gap-4">
         <div className="flex flex-col gap-2 text-muted-foreground">
@@ -48,13 +51,13 @@ export function JobCard() {
           {renderFooterItem(IconCloudComputing, item.job.techStack.cloud)}
           {renderFooterItem(IconBrandAdobeIllustrator, item.job.techStack.ai)}
         </div>
-        {renderFooterBadges}
+        {renderFooterBadges(item)}
       </CardFooter>
     </Card>
   )
 }
 
-const renderHeaderBadges = (
+const renderHeaderBadges = (item: TransformedJobDto) => (
   <div className="flex-cs flex-wrap gap-2">
     <Badge variant="outline">
       <IconUser />
@@ -84,7 +87,7 @@ const renderHeaderBadges = (
   </div>
 )
 
-const renderFooterBadges = (
+const renderFooterBadges = (item: TransformedJobDto) => (
   <div className="flex-cs flex-wrap gap-2">
     {item.job.salaryRange?.actual ? (
       <Badge variant="outline">
@@ -101,7 +104,7 @@ const renderFooterBadges = (
   </div>
 )
 
-const renderTitle = (
+const renderTitle = (item: TransformedJobDto) => (
   <div className="flex-cs debug_ mt-8 min-h-[50px] text-2xl font-semibold tabular-nums @[250px]/card:text-3xl">
     <a
       href={item.company.website || undefined}
@@ -113,7 +116,7 @@ const renderTitle = (
   </div>
 )
 
-const renderContent = (
+const renderContent = (item: TransformedJobDto) => (
   <>
     <div className="flex-cs line-clamp-1 gap-2">
       <IconInfoCircle className="size-4 min-w-[16px]" />

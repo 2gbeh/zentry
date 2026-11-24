@@ -1,3 +1,5 @@
+"use client"
+
 import { clsx } from "cn"
 import {
   type TablerIcon,
@@ -23,25 +25,28 @@ import {
   CardTitle,
 } from "@/components/shadcn/ui/card"
 //
-import { transformProfile } from "../utils/profile-utils"
-import { data } from "../data/profiles"
-
-const item = transformProfile(data[0])
+import { TransformedProfileDto, transformProfile } from "../utils/profile-utils"
+import { profilesData } from "../data/profiles-data"
+import { useInterviewStore } from "../store"
 
 export function ProfileCard() {
+  const profileId = useInterviewStore((s) => s.profileId)
+  const profile = profilesData[Number(profileId)]
+  const item = transformProfile(profile)
+
   return (
     <Card className="@container/card">
       <CardHeader>
         <CardDescription>
           <div className="flex-cb">
             <span>Profile Details</span>
-            {renderHeaderBadges}
+            {renderHeaderBadges(item)}
           </div>
         </CardDescription>
-        <CardTitle>{renderTitle}</CardTitle>
+        <CardTitle>{renderTitle(item)}</CardTitle>
       </CardHeader>
       <CardContent className="flex-col-sx gap-2 font-medium">
-        {renderContent}
+        {renderContent(item)}
       </CardContent>
       <CardFooter className="flex-col-sx gap-4">
         <div className="flex flex-wrap gap-2 text-muted-foreground">
@@ -63,13 +68,13 @@ export function ProfileCard() {
             ? renderFooterItem(IconBallBasketball, item.hobbies)
             : null}
         </div>
-        {renderFooterBadges}
+        {renderFooterBadges(item)}
       </CardFooter>
     </Card>
   )
 }
 
-const renderHeaderBadges = (
+const renderHeaderBadges = (item: TransformedProfileDto) => (
   <div className="flex-cs flex-wrap gap-2">
     {item.birthDate ? (
       <Badge
@@ -94,7 +99,7 @@ const renderHeaderBadges = (
   </div>
 )
 
-const renderFooterBadges = (
+const renderFooterBadges = (item: TransformedProfileDto) => (
   <div className="flex-cs flex-wrap gap-2">
     <Badge variant="outline">
       <IconClockDollar />
@@ -111,7 +116,7 @@ const renderFooterBadges = (
   </div>
 )
 
-const renderTitle = (
+const renderTitle = (item: TransformedProfileDto) => (
   <figure className="flex-cs debug_ mt-4 gap-4">
     <div className="relative">
       <img
@@ -140,7 +145,7 @@ const renderTitle = (
   </figure>
 )
 
-const renderContent = (
+const renderContent = (item: TransformedProfileDto) => (
   <>
     <div className="flex-cs line-clamp-1 gap-2">
       <IconHome className="size-4" />

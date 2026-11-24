@@ -1,82 +1,52 @@
-import type { Metadata } from "next"
-import { PlusIcon } from "lucide-react"
-import { Label } from "@/components/shadcn/ui/label"
+"use client"
+
 import { Input } from "@/components/shadcn/ui/input"
-import { Button } from "@/components/shadcn/ui/button"
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectLabel,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/shadcn/ui/select"
+import { ToolbarSelect } from "@/components/atoms/toolbar-select"
+import { ToolbarButton } from "@/components/atoms/toolbar-button"
 import { DashboardContent } from "@/components/species/dashboard/ui/dashboard-container"
-import { PATH } from "@/constants/PATH"
+import { useInterviewStore } from "../store"
+import { UNKNOWN } from "@/constants"
+//
+import { profilesData } from "../data/profiles-data"
+import { jobsData } from "../data/jobs-data"
 
 const profiles = [
-  { label: "Donovan Piper", value: "donovan" },
-  { label: "Segun Alabi", value: "segun" },
-  { label: "Marcel Mcloy", value: "marcel" },
-  { label: "Jeron Walker", value: "jeron" },
-  { label: "Shaid Florence", value: "shaid" },
-  { label: "Justin Pallay", value: "justin" },
+  { label: "Donovan Piper", value: "1" },
+  { label: "Segun Alabi", value: "2" },
+  { label: "Marcel Mcloy", value: "3" },
+  { label: "Jeron Walker", value: "4" },
+  { label: "Shaid Florence", value: "5" },
+  { label: "Justin Pallay", value: "6" },
 ]
 
-const jobs = [{ label: "Attilio", value: "attilio" }]
-
 export function Toolbar() {
+  const jobId = useInterviewStore((s) => s.jobId)
+  const setJobId = useInterviewStore((s) => s.setJobId)
+  const profileId = useInterviewStore((s) => s.profileId)
+  const setProfileId = useInterviewStore((s) => s.setProfileId)
+
   return (
     <DashboardContent className="flex-cb gap-3">
-      <div className="flex-cs gap-2">
-        <Label
-          htmlFor="profiles"
-          className="hidden whitespace-nowrap lg:inline"
-        >
-          Select Profile:
-        </Label>
-        <Select id="profiles" items={profiles} defaultValue="segun">
-          <SelectTrigger>
-            <SelectValue />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectGroup>
-              <SelectLabel>Profiles</SelectLabel>
-              {profiles.map((item) => (
-                <SelectItem key={item.value} value={item.value}>
-                  {item.label}
-                </SelectItem>
-              ))}
-            </SelectGroup>
-          </SelectContent>
-        </Select>
-      </div>
-      <div className="flex-cs gap-2">
-        <Label htmlFor="jobs" className="hidden whitespace-nowrap lg:inline">
-          Select Job:
-        </Label>
-        <Select id="jobs" items={jobs} defaultValue="attilio">
-          <SelectTrigger>
-            <SelectValue />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectGroup>
-              <SelectLabel>Jobs</SelectLabel>
-              {jobs.map((item) => (
-                <SelectItem key={item.value} value={item.value}>
-                  {item.label}
-                </SelectItem>
-              ))}
-            </SelectGroup>
-          </SelectContent>
-        </Select>
-      </div>
+      <ToolbarSelect
+        label="Select Profile:"
+        value={profileId}
+        data={profilesData.map((item, i) => ({
+          label: item.fullName,
+          value: String(i),
+        }))}
+        onChange={(id) => setProfileId(id || "")}
+      />
+      <ToolbarSelect
+        label="Select Job:"
+        value={jobId}
+        data={jobsData.map((item, i) => ({
+          label: item.company?.name || UNKNOWN,
+          value: String(i),
+        }))}
+        onChange={(id) => setJobId(id || "")}
+      />
       <Input type="search" placeholder="Search keywords..." />
-      <Button>
-        <PlusIcon />
-        <span className="hidden lg:inline">Add Question</span>
-      </Button>
+      <ToolbarButton>Add Question</ToolbarButton>
     </DashboardContent>
   )
 }

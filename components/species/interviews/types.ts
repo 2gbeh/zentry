@@ -22,6 +22,10 @@ export interface ProfileDto {
     }
   }
   website?: string
+  zadarma?: {
+    username: string
+    password: string
+  }
   hobbies?: string
   salaryRange?: {
     hour?: string
@@ -30,6 +34,7 @@ export interface ProfileDto {
   }
   ssn?: number
   gch?: boolean
+  careerSummary?: string
 }
 
 export interface JobDto {
