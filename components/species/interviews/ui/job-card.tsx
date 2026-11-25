@@ -12,7 +12,6 @@ import {
   IconUser,
   IconVideo,
 } from "@tabler/icons-react"
-import { Badge } from "@/components/shadcn/ui/badge"
 import {
   Card,
   CardContent,
@@ -21,6 +20,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/shadcn/ui/card"
+import { Badge } from "@/components/shadcn/ui/badge"
 //
 import { useInterviewStore } from "../store"
 import { TransformedJobDto, transformJob } from "../utils/job-utils"
@@ -30,6 +30,8 @@ export function JobCard() {
   const jobId = useInterviewStore((s) => s.jobId)
   const job = jobsData[Number(jobId)]
   const item = transformJob(job)
+
+  if (!jobId) return null
 
   return (
     <Card className="@container/card">
@@ -47,9 +49,9 @@ export function JobCard() {
       </CardContent>
       <CardFooter className="flex-col-sx gap-4">
         <div className="flex flex-col gap-2 text-muted-foreground">
-          {renderFooterItem(IconCode, item.job.techStack.lang)}
-          {renderFooterItem(IconCloudComputing, item.job.techStack.cloud)}
-          {renderFooterItem(IconBrandAdobeIllustrator, item.job.techStack.ai)}
+          {renderFooterItem(IconCode, item.job.stack.lang)}
+          {renderFooterItem(IconCloudComputing, item.job.stack.cloud)}
+          {renderFooterItem(IconBrandAdobeIllustrator, item.job.stack.ai)}
         </div>
         {renderFooterBadges(item)}
       </CardFooter>

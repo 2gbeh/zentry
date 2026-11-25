@@ -3,6 +3,21 @@ import { JobDto } from "../types"
 export const jobsData: JobDto[] = [
   {
     recruiter: {
+      displayName: "Nimish (CTO)",
+      meetingUri:
+        "https://meet.google.com/boo-dbcv-jsv",
+    },
+    company: {
+      name: "Subcraft",
+      about: " AI-driven Failed Subscription Recovery",
+      website: "http://subcraft.ai/",
+    },
+    job: {
+      role: "Founding Engineer",
+    },
+  },
+  {
+    recruiter: {
       displayName: "Derek (SWE)",
       meetingUri:
         "https://teams.microsoft.com/meet/2956798309793366?p=ciK5jaB9iS3JceqYGO",
@@ -15,7 +30,7 @@ export const jobsData: JobDto[] = [
     job: {
       role: "Sr. Full Stack & GenAI Developer",
       url: "https://jobs.burtchworks.com/s?jobId=a09Vv00000B52SlIAJ",
-      techStack: {
+      stack: {
         lang: "Python, Node.js, PostgreSQL",
         cloud: "Docker, AWS RDS, Azure SQL, RabbitMQ",
         ai: "OpenAI GPT",
@@ -39,7 +54,7 @@ export const jobsData: JobDto[] = [
     job: {
       role: "Senior Software Engineer",
       url: "https://wellfound.com/jobs/4869683-senior-software-engineer",
-      techStack: {
+      stack: {
         lang: "Python, NoSQL, PostgreSQL",
         cloud: "GCP, Google Cloud Composer, Elasticsearch, Apache Airflow",
         ai: "Claude Code, Codex",
@@ -63,7 +78,7 @@ export const jobsData: JobDto[] = [
     job: {
       role: "Staff Data Platform Engineer",
       url: "https://careers.alight.com/us/en/job/R-38579/Staff-Data-Platform-Engineer-Virtual",
-      techStack: {
+      stack: {
         lang: "Python, SQL",
         cloud:
           "AWS, Dagster (AWS Step Functions, Azure Data Factory, Apache Airflow)",
@@ -87,7 +102,7 @@ export const jobsData: JobDto[] = [
     job: {
       role: "Founding AI Full Stack Engineer",
       url: "https://drive.google.com/file/d/1iUZueSK_eO3r8HBatIZe45IDNwg-7ag4/view?usp=drive_link",
-      techStack: {
+      stack: {
         lang: "TypeScript, React, React Native, Node.js, SQL",
         cloud: "AWS/GCP, Segment",
         ai: "AI/LLM, OpenAI/Anthropic, LangChain, RAG, Agentic WF, Vector DB (Pinecone, Milvus, pgvector)",

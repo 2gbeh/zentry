@@ -18,11 +18,11 @@ export function transformJob(x: JobDto) {
     job: {
       ...x.job,
       role: x.job?.role || UNKNOWN,
-      techStack: {
-        ...x.job?.techStack,
-        lang: x.job?.techStack?.lang || NONE,
-        cloud: x.job?.techStack?.cloud || NONE,
-        ai: x.job?.techStack?.ai || NONE,
+      stack: {
+        ...x.job?.stack,
+        lang: x.job?.stack?.lang || NONE,
+        cloud: x.job?.stack?.cloud || NONE,
+        ai: x.job?.stack?.ai || NONE,
       },
     },
   }

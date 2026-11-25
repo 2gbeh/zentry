@@ -34,6 +34,8 @@ export function ProfileCard() {
   const profile = profilesData[Number(profileId)]
   const item = transformProfile(profile)
 
+  if (!profileId) return null
+
   return (
     <Card className="@container/card">
       <CardHeader>
@@ -151,11 +153,9 @@ const renderContent = (item: TransformedProfileDto) => (
       <IconHome className="size-4" />
       <span>
         {item.address}
-        {item.weather ? (
-          <>
-            <br />[{item.weather}]
-          </>
-        ) : null}
+        {item.county || item.weather ? <br /> : null}
+        {item.county ? `${item.county} ` : null}
+        {item.weather ? `[${item.weather}] ` : null}
       </span>
     </div>
     <div className="flex-cs line-clamp-1 gap-2">

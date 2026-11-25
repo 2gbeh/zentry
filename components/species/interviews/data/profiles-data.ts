@@ -1,11 +1,21 @@
 import { ProfileDto } from "../types"
 
+// const profiles = [
+//   { label: "Donovan Piper", value: "1" },
+//   { label: "Segun Alabi", value: "2" },
+//   { label: "Marcel Mcloy", value: "3" },
+//   { label: "Jeron Walker", value: "4" },
+//   { label: "Shaid Florence", value: "5" },
+//   { label: "Justin Pallay", value: "6" },
+// ]
+
 export const profilesData: ProfileDto[] = [
   {
     fullName: "Justin Pallay",
     tel: "1(412) 674 2446",
     email: "justinpallayleaps@gmail.com",
-    address: "16 Meadows Court, Hawley, PA 18428",
+    address: "16 Meadows Court, Hawley, Pennsylvania 18428",
+    county: "Wayne County",
     birthDate: "Oct 31st, 1984",
     education: {
       institution: "Penn State University",
@@ -22,7 +32,7 @@ export const profilesData: ProfileDto[] = [
         url: "https://github.com/jpallayleaps",
       },
     },
-    website: "https://jpallay-portfolio.vercel.app/", 
+    website: "https://jpallay-portfolio.vercel.app/",
     ssn: 942,
     gch: false,
   },
@@ -32,7 +42,8 @@ export const profilesData: ProfileDto[] = [
     birthDate: "Jun 5th, 1976",
     tel: "(610)-557-9496",
     email: "segunalabi383@gmail.com",
-    address: "227 Park Ave (Apt 3B) East Orange, NJ, 07017",
+    address: "227 Park Ave (Apt 3B) East Orange, New Jersey 07017",
+    county:'Essex County',
     weather: "19C, 66F",
     education: {
       institution: "Princeton University",
@@ -53,11 +64,11 @@ export const profilesData: ProfileDto[] = [
     zadarma: {
       username: "22790",
       password: "OChT65anhX",
-    },    
+    },
     hobbies: "Basketball, Gym, Reading",
     ssn: 669,
     gch: true,
-    careerSummary: `
+    background: `
 Hello %recruiterName, I'm $profileName, I am based in $displayAddress.
 <p></p>
 I've been a Software Engineer for over 10y now, <br/>

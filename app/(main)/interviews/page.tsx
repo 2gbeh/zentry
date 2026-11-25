@@ -1,15 +1,14 @@
 import type { Metadata } from "next"
 import {
-  DashboardCard,
   DashboardContainer,
   DashboardContent,
 } from "@/components/species/dashboard/ui/dashboard-container"
-import { FaqsAccordion } from "@/components/species/interviews/ui/faqs-accordion"
 import { PATH } from "@/constants/PATH"
 //
 import { Toolbar } from "@/components/species/interviews/ui/toolbar"
-import { ProfileCard } from "@/components/species/interviews/ui/profile-card"
 import { JobCard } from "@/components/species/interviews/ui/job-card"
+import { ProfileCard } from "@/components/species/interviews/ui/profile-card"
+import { FaqsAccordion } from "@/components/species/interviews/ui/faqs-accordion"
 
 export const metadata: Metadata = {
   title: "Interviews",
@@ -27,9 +26,7 @@ export default function InterviewsPage() {
         <JobCard />
       </div>
       <DashboardContent>
-        <DashboardCard title="FAQs" description="Frequently asked questions">
-          <FaqsAccordion />
-        </DashboardCard>
+        <FaqsAccordion />
       </DashboardContent>
     </DashboardContainer>
   )

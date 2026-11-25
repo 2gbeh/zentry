@@ -27,12 +27,24 @@ pnpm run dev
 
 ### Modules
 
-- Journals / Napkin&trade;
+- Journal / Napkin&trade;
 - Credentials / S3tcred&trade;
-- Finance Ledger / Fedora&trade;
+- Finance Ledger / Fedora&trade; ⭐
 - Design Templates
 - Episode Scripts
 - Presentation Slides / Cascade&trade;
-- Interview Prep / Coyote&trade;
+- Interview Prep / Coyote&trade; ✅
 - Timesheet
-- Secrets 🔴
+- Secrets ⚠️
+
+### Pages
+
+- Auth
+- - Login
+- - Forgot Password
+- - Reset Password
+- Dashboard
+- - Reports (Analytics)
+- Audit Logs ❌
+- Settings
+- Profile

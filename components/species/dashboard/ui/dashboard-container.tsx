@@ -40,21 +40,26 @@ export const DashboardContent = ({
 interface DashboardCardProps extends PropsWithChildren {
   title?: string
   description?: string
+  actions?: React.ReactNode
 }
 
 export const DashboardCard = ({
   children,
   title,
   description,
+  actions,
 }: DashboardCardProps) => {
   return (
-    <Card className="@container/card">
+    <Card className="@container/card gap-1">
       {title || description ? (
-        <CardHeader>
-          {title ? <CardTitle>{title}</CardTitle> : null}
-          {description ? (
-            <CardDescription>{description}</CardDescription>
-          ) : null}
+        <CardHeader className="flex-cb">
+          <div>
+            {title ? <CardTitle>{title}</CardTitle> : null}
+            {description ? (
+              <CardDescription>{description}</CardDescription>
+            ) : null}
+          </div>
+          {actions}
         </CardHeader>
       ) : null}
       <CardContent>{children}</CardContent>

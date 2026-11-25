@@ -5,6 +5,7 @@ export interface ProfileDto {
   tel?: string
   email: string
   address: string
+  county?: string
   weather?: string
   education: {
     institution: string
@@ -34,7 +35,7 @@ export interface ProfileDto {
   }
   ssn?: number
   gch?: boolean
-  careerSummary?: string
+  background?: string
 }
 
 export interface JobDto {
@@ -50,7 +51,7 @@ export interface JobDto {
   job?: {
     role: string
     url?: string
-    techStack?: {
+    stack?: {
       lang?: string
       cloud?: string
       ai?: string
@@ -63,6 +64,19 @@ export interface JobDto {
 }
 
 export interface QuestionDto {
-  q: string
-  a?: string
+  question: string
+  answer?: string
+  profileId?: string
+  metadata?: {
+    duration: string
+    stack?: string
+    // STAR
+    situation?: string
+    task?: string
+    action?: string
+    result?: string
+    // CLUE
+    challenges?: string
+    lessons?: string
+  }
 }

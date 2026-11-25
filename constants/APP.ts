@@ -5,7 +5,7 @@ export const APP = {
   nameShort: "ZEntry",
   slug: "zentry",
   title: "Personal Information Manager (PIM)",
-  description: `All-In-One PIM Solution. Organize, Automate, and Analyze Your Personal Records. Manage Journals, Credentials, Finances, and more.`,
+  description: `All-In-One PIM Solution. Organize, Automate, and Analyze Your Personal Records. Manage Journal, Credentials, Finances, and more.`,
   colors: {
     blue: "#0092dd",
     orange: "#dd4a00",
