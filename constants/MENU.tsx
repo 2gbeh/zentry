@@ -42,7 +42,7 @@ export const MENU = {
     {
       slug: "designs",
       title: "Design Templates",
-      url: PATH.nil,
+      url: PATH.designs,
       Icon: PaletteIcon,
     },
     {
@@ -84,7 +84,7 @@ export const MENU = {
       slug: "credentials",
       title: "Credentials",
       alias: "S3tcred&trade;",
-      url: PATH.credentials,
+      url: PATH.nil,
       Icon: FileBadgeIcon,
     },
     // {

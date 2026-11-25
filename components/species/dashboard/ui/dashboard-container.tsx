@@ -39,7 +39,7 @@ export const DashboardContent = ({
 
 interface DashboardCardProps extends PropsWithChildren {
   title?: string
-  description?: string
+  description?: React.ReactNode
   actions?: React.ReactNode
 }
 

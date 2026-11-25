@@ -7,6 +7,7 @@ import {
   SidebarMenuItem,
 } from "@/components/shadcn/ui/sidebar"
 import { MenuItemParams } from "@/constants/MENU"
+import { PATH } from "@/constants/PATH"
 
 interface Props extends MenuItemParams {}
 
@@ -14,7 +15,8 @@ export function MenuItem({ Icon, ...props }: Props) {
   const router = useRouter()
   const pathname = usePathname()
 
-  const isActive =
+  const isInactive = props.url === PATH.nil
+  const isFocus =
     props.url === "/"
       ? pathname === "/"
       : pathname === props.url || pathname.startsWith(`${props.url}/`)
@@ -28,7 +30,10 @@ export function MenuItem({ Icon, ...props }: Props) {
       <SidebarMenuButton
         tooltip={props.title}
         onClick={handleClick}
-        className={cn(isActive && "bg-primary/10 font-semibold")}
+        className={cn(
+          isFocus && "bg-primary/10 font-medium",
+          isInactive && "text-primary/30"
+        )}
       >
         {Icon ? <Icon /> : null}
         <span dangerouslySetInnerHTML={{ __html: props.title }} />

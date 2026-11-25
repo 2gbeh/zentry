@@ -17,7 +17,7 @@ export function ForgotPasswordForm() {
   const handleSubmit = async () => {
     setLoading(true)
     await sleep()
-    router.replace(PATH.login)
+    router.replace(PATH.resetPassword + "?token=")
   }
 
   return (
