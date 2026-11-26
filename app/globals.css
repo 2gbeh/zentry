@@ -130,6 +130,10 @@
   html {
     @apply font-sans;
   }
+  i,
+  address {
+    font-style: normal;
+  }
 }
 
 @layer components {
@@ -142,7 +146,6 @@
   .debug {
     @apply border border-red-500;
   }
-
   .flex-cb {
     @apply flex items-center justify-between;
   }
@@ -158,7 +161,22 @@
   .flex-cx {
     @apply flex items-center;
   }
+  .flex-col-1 {
+    @apply flex flex-1 flex-col;
+  }
+  .flex-col-cc-h {
+    @apply flex min-h-screen flex-col items-center justify-center;
+  }
+  .flex-col-cc {
+    @apply flex flex-col items-center justify-center;
+  }
+  .flex-col-cx {
+    @apply flex flex-col items-center;
+  }
   .flex-col-sx {
     @apply flex flex-col items-start;
+  }
+  .flex-col-x {
+    @apply flex flex-col;
   }
 }

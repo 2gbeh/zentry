@@ -122,7 +122,7 @@ const renderTitle = (item: TransformedProfileDto) => (
   <figure className="flex-cs debug_ mt-4 gap-4">
     <div className="relative">
       <img
-        src={`/profiles/${item.socials.linkedIn.avatar}`}
+        src={`/uploads/profiles/${item.socials.linkedIn.avatar}`}
         alt=""
         width={70}
         className="rounded-full border-2"

@@ -87,12 +87,12 @@ export const MENU = {
       url: PATH.nil,
       Icon: FileBadgeIcon,
     },
-    // {
-    //   slug: "audits",
-    //   title: "Audit Logs",
-    //   url: PATH.nil,
-    //   Icon: DatabaseSearchIcon,
-    // },
+    {
+      slug: "audits",
+      title: "Audit Logs",
+      url: PATH.nil,
+      Icon: DatabaseSearchIcon,
+    },
     {
       slug: "settings",
       title: "Settings",

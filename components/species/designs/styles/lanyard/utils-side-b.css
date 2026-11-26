@@ -1,0 +1,42 @@
+/*
+<main className="flex flex-1 flex-col">
+        <div className="relative flex-1 bg-[#109230]">
+          <LanyardNotch />
+          <div className="absolute -bottom-[64px] w-full px-[64px]">
+            <div className="flex-col-cc h-[360px] w-full space-y-4 rounded-[16px] border-4 border-[#dce5de] bg-white text-center text-foreground">
+              <div className="name">
+                {data.displayName}{" "}
+                <b>{data.affiliations}</b>
+              </div>
+              <div className="bio">{data.bio}</div>
+              <div className="email">{data.email}</div>
+              <div className="orcid">
+                <b>ORCID:</b> {data.orcid.id}
+              </div>
+              <figure className="flex-cc">
+                <img
+                  src={data.orcid.img}
+                  alt=""
+                  width={100}
+                  className="shadow-lg"
+                />
+              </figure>
+            </div>
+          </div>
+        </div>
+      </main>
+      <footer className="h-[120px] bg-[#ffff08]"></footer>
+      */
+.lanyard-side-b-styles {
+  /* display: flex; */
+  main{
+    background: linear-gradient(to bottom, white, var(--color-background));
+
+
+  }
+   footer {
+    background-image: url("@/public/assets/lanyard/ribbon.png");
+    background-size: cover;
+    /* background-position: 50% center; */
+  }
+}

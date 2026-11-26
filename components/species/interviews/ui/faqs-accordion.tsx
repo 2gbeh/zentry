@@ -45,37 +45,32 @@ export function FaqsAccordion() {
     >
       <Accordion multiple={expandMultiple}>
         {faqsData
-          .filter((item) =>
-            item.profileId ? item.profileId === profileId : true
+          .filter(
+            (item) =>
+              !item.hidden &&
+              (item.profileId ? item.profileId === profileId : true)
           )
-          .map(({ question, answer, ...item }, i) => (
+          .map((item, i) => (
             <AccordionItem key={i}>
               <AccordionTrigger>
                 <div className="flex-cb w-full">
-                  <span>{question}</span>
-                  {item.metadata?.duration ? (
+                  <span>{item.title}</span>
+                  {item.subtitle ? (
                     <span className="mr-4 text-muted-foreground">
-                      {item.metadata.duration}
+                      {item.subtitle}
                     </span>
                   ) : null}
                 </div>
               </AccordionTrigger>
               <AccordionContent className="space-y-4">
-                {item.metadata?.stack ? (
+                {item.summary ? (
                   <div className="font-medium_ text-muted-foreground">
-                    {item.metadata.stack}
+                    {item.summary}
                   </div>
                 ) : null}
-                <div dangerouslySetInnerHTML={{ __html: answer || "" }} />
-                {item.metadata?.result ? (
-                  <div className="font-medium">{item.metadata.result}</div>
-                ) : null}
-                {item.metadata?.challenges ? (
-                  <div className="text-red-800">{item.metadata.challenges}</div>
-                ) : null}
-                {item.metadata?.lessons ? (
-                  <div className="text-blue-800">{item.metadata.lessons}</div>
-                ) : null}
+                <div
+                  dangerouslySetInnerHTML={{ __html: item.description || "" }}
+                />
               </AccordionContent>
             </AccordionItem>
           ))}

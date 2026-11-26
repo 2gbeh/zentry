@@ -3,9 +3,23 @@ import { JobDto } from "../types"
 export const jobsData: JobDto[] = [
   {
     recruiter: {
+      displayName: "Joseph (Recruiter)",
+      meetingUri: "https://teams.microsoft.com/meet/2458327429324625?p=Vb4UUtlh1WKLmcfqJp",
+    },
+    company: {
+      name: "Byzfunder",
+      about: " AI-driven Loan Mgmt for SMB Lending",
+      website: "http://byzfunder.com/",
+    },
+    job: {
+      role: "Python AI/ML Engineer",
+      url: "https://docs.google.com/document/d/1l44pYM72taIA1oGrtTSIwjrexNLe-nr1EXyFJRKwIPg",
+    },
+  },
+  {
+    recruiter: {
       displayName: "Nimish (CTO)",
-      meetingUri:
-        "https://meet.google.com/boo-dbcv-jsv",
+      meetingUri: "https://meet.google.com/boo-dbcv-jsv",
     },
     company: {
       name: "Subcraft",

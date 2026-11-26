@@ -19,10 +19,10 @@ export function Toolbar() {
   const setSearchQuery = useInterviewStore((s) => s.setSearchQuery)
 
   return (
-    <DashboardContent className="flex-cb gap-3">
+    <DashboardContent className="flex-cb gap-4">
       <ToolbarSelect
         name="profileId"
-        label="Select Profile:"
+        label="Profile:"
         placeholder="Profiles"
         value={profileId}
         data={profilesData.map((item, i) => ({
@@ -33,7 +33,7 @@ export function Toolbar() {
       />
       <ToolbarSelect
         name="jobId"
-        label="Select Job:"
+        label="Job:"
         placeholder="Jobs"
         value={jobId}
         data={jobsData.map((item, i) => ({

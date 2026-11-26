@@ -1,0 +1,30 @@
+.lanyard-styles {
+  --font-body: "Roboto", sans-serif;
+  --font-display: "Cambria", sans-serif;
+  --color-black: #000;
+  --color-white: #f7f8f5;
+  --color-background: #e8f5ec;
+  --color-border: #dce5de;
+  --color-green: #109230;
+  --color-yellow: #ffff08;
+  --color-red: #dc2626;
+
+  .notch {
+    padding-top: 24px;
+    display: flex;
+    justify-content: center;
+    div {
+      background-color: black;
+      border-radius: 20px;
+      width: 48px;
+      height: 16px;
+    }
+  }
+
+  .container {
+    width: 640px;
+    height: 640px;
+    display: flex;
+    flex-direction: column;
+  }
+}

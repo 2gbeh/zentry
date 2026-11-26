@@ -1,10 +1,9 @@
 export type PathType = string | ((id: unknown) => string)
 
 export const PATH_PROTECTED = {
-  dashboard: "/dashboard_",
+  dashboard: "/dashboard",
   designs: "/designs",
   interviews: "/interviews",
-  credentials: "/credentials",
 } as const satisfies Record<string, PathType>
 
 export const PATH = {

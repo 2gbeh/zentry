@@ -30,7 +30,7 @@ pnpm run dev
 - Journal / Napkin&trade;
 - Credentials / S3tcred&trade;
 - Finance Ledger / Fedora&trade; ⭐
-- Design Templates
+- Design Templates ✅
 - Episode Scripts
 - Presentation Slides / Cascade&trade;
 - Interview Prep / Coyote&trade; ✅

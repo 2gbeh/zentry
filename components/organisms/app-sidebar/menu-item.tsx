@@ -32,17 +32,11 @@ export function MenuItem({ Icon, ...props }: Props) {
         onClick={handleClick}
         className={cn(
           isFocus && "bg-primary/10 font-medium",
-          isInactive && "text-primary/30"
+          isInactive && "text-primary/40"
         )}
       >
         {Icon ? <Icon /> : null}
         <span dangerouslySetInnerHTML={{ __html: props.title }} />
-        {/* {props.alias && (
-          <span
-            className="_ml-auto _text-xs text-contrast"
-            dangerouslySetInnerHTML={{ __html: props.alias }}
-          />
-        )} */}
       </SidebarMenuButton>
     </SidebarMenuItem>
   )

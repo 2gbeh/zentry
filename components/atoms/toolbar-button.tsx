@@ -1,15 +1,20 @@
-import { PlusIcon } from "lucide-react"
+import { DownloadIcon, PlusIcon } from "lucide-react"
 import { Button } from "@/components/shadcn/ui/button"
 
 interface Props {
   children: string
-  variant?: "add"
+  variant?: "add" | "download"
 }
 
 export const ToolbarButton = ({ children, variant = "add" }: Props) => {
   return (
-    <Button>
-      {{ add: <PlusIcon /> }[variant]}
+    <Button title={children}>
+      {
+        {
+          add: <PlusIcon />,
+          download: <DownloadIcon />,
+        }[variant]
+      }
       <span className="hidden lg:inline">{children}</span>
     </Button>
   )

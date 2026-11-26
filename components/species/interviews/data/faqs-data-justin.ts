@@ -3,35 +3,31 @@ import { QuestionDto } from "../types"
 export const faqsDataJustin: QuestionDto[] = [
   {
     profileId: "0",
-    question:
+    title:
       "My Background - Justin | 12y+ | Hawley (Wayne County), Pennsylvania",
-    answer: `
+    description: `
       Applied AI, LLM Evaluation & Distributed Cloud Systems
     `,
   },
   {
     profileId: "0",
-    question: "Uber - Senior SWE",
-    answer: `
-      <p>=[S] Uber Eats payments, risk and delivery platform</p>
-      <p>=[T] Built a real-time fraud detection service on Kafka and Flink that scored each order and payment cutting chargeback losses 22% while keeping false declines under 1%.</p>
-      <p>=[A] Developed payment features for checkout, including card authorization retries, digital wallet and Uber Cash flows and idempotent refund APIs, raising payment success rates 3% across markets.</p>
-      <p>=[R] Uber Eats payments, risk and delivery platform.</p>
+    title: "Uber - Senior SWE",
+    description: `
+      <p>= Uber Eats payments, risk and delivery platform</p>
+      <p>= Built a real-time fraud detection service on Kafka and Flink that scored each order and payment cutting chargeback losses 22% while keeping false declines under 1%.</p>
+      <p>= Developed payment features for checkout, including card authorization retries, digital wallet and Uber Cash flows and idempotent refund APIs, raising payment success rates 3% across markets.</p>
+      <p><b>= Uber Eats payments, risk and delivery platform.</b></p>
+      <p>= Built a real-time fraud detection service on Kafka and Flink that scored each order and payment cutting chargeback losses 22% while keeping false declines under 1%</p>
+      <p>= Built a real-time fraud detection service on Kafka and Flink that scored each order and payment cutting chargeback losses 22% while keeping false declines under 1%</p>
       `,
-    metadata: {
-      duration: "12/2022 - 10/2026",
-      challenges:
-        "Built a real-time fraud detection service on Kafka and Flink that scored each order and payment cutting chargeback losses 22% while keeping false declines under 1%",
-      lessons:
-        "Built a real-time fraud detection service on Kafka and Flink that scored each order and payment cutting chargeback losses 22% while keeping false declines under 1%",
-      stack:
-        "TypeScript, React, Python, FastAPI, PostgreSQL, OpenAI, GCP, Apache Kafka",
-    },
+    subtitle: "12/2022 - 10/2026",
+    summary:
+      "TypeScript, React, Python, FastAPI, PostgreSQL, OpenAI, GCP, Apache Kafka",
   },
   {
     profileId: "0",
-    question: "Tango - Founding Engineer, Tech Lead",
-    answer: `
+    title: "Tango - Founding Engineer, Tech Lead",
+    description: `
       Built document automation tools, dashboards, APIs for Real Estate agencies, Law Firms.
       <p></p>
       leases agreements, contracts and engagement letters, schema-validated fields
@@ -42,28 +38,22 @@ export const faqsDataJustin: QuestionDto[] = [
         TypeScript, React, Python OCR, Django, PostgreSQL, OpenAI GPT-3, AWS, Terraform
       </b>
     `,
-    metadata: {
-      duration: "03/2020 - 11/2022",
-    },
+    subtitle: "03/2020 - 11/2022",
   },
   {
     profileId: "0",
-    question: "CAI - Full Stack Engineer",
-    answer: `
+    title: "CAI - Full Stack Engineer",
+    description: `
       Built full stack healthcare applications for state Medicaid and health and human services agencies, including eligibility, enrollment and case management portals used daily by caseworkers, providers and residents.
     `,
-    metadata: {
-      duration: "09/2017 - 03/2020",
-    },
+    subtitle: "09/2017 - 03/2020",
   },
   {
     profileId: "0",
-    question: "OnlineStores - Backend Engineer",
-    answer: `
+    title: "OnlineStores - Backend Engineer",
+    description: `
       Developed a NestJS pricing and product configuration service for custom-printed hard hats and flags, handling artwork uploads to S3 and quantity-based pricing rules for bulk orders from businesses and schools.
     `,
-    metadata: {
-      duration: "06/2014 - 08/2017",
-    },
-  }, // { question: "", answer: `` },
+    subtitle: "06/2014 - 08/2017",
+  }, // { title: "", description: `` },
 ]

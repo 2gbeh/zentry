@@ -64,19 +64,10 @@ export interface JobDto {
 }
 
 export interface QuestionDto {
-  question: string
-  answer?: string
+  title: string
+  subtitle?: string
+  summary?: string
+  description?: string
   profileId?: string
-  metadata?: {
-    duration: string
-    stack?: string
-    // STAR
-    situation?: string
-    task?: string
-    action?: string
-    result?: string
-    // CLUE
-    challenges?: string
-    lessons?: string
-  }
+  hidden?: boolean
 }

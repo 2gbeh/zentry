@@ -8,6 +8,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/shadcn/ui/select"
+import { OptionType } from "@/types"
 
 interface Props {
   name: string
@@ -15,7 +16,7 @@ interface Props {
   defaultValue?: string
   value?: string
   placeholder?: string
-  data?: { label: string; value: string }[]
+  data?: OptionType[]
   onChange?: (value: string | null, label?: string) => void
 }
 
