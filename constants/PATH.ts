@@ -4,6 +4,7 @@ export const PATH_PROTECTED = {
   dashboard: "/dashboard",
   designs: "/designs",
   interviews: "/interviews",
+  credentials: "/credentials",
 } as const satisfies Record<string, PathType>
 
 export const PATH = {
